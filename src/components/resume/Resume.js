@@ -4,6 +4,7 @@ import Title from '../layouts/Title';
 import Education from './Education';
 import Skills from './Skills';
 import Experience from "./Experience";
+import PratikResume from '../../assets/PratikResume.pdf'
 
 const Resume = () => {
    const [educationData, setEducationData] = useState(true);
@@ -14,9 +15,9 @@ const Resume = () => {
     <section id="resume" className="w-full py-20 border-b-[1px] border-b-black">
       <div className="flex flex-col justify-center items-center text-center mb-4">
         <Title des="My Resume" />
-        {/* Download resume button - place your resume PDF at public/resume.pdf or update the href below */}
+        {/* Download resume button. The PDF is imported above from src/assets; use the imported variable as the href */}
         <a
-          href="/resume.pdf"
+          href={PratikResume}
           download
           target="_blank"
           rel="noopener noreferrer"

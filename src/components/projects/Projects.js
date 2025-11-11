@@ -28,12 +28,12 @@ const Projects = () => {
           src={project2}
         />
         <ProjectsCard
-          title="Moodify Music App"
-          githubLink="https://github.com/Pratik-Bavche/Moodify_Music_App"
-          liveLink="moodify-music-web-app-client.vercel.app"
+          title="Pingup Social Media Platform"
+          githubLink="https://github.com/Pratik-Bavche/Pingup-social-media"
+          liveLink="pingup-social-media.vercel.app/"
           des="
-          Moodify is a full-stack, AI-powered music streaming app that detects your mood via webcam or manual input and recommends songs accordingly. Built with React.js, Tailwind CSS, Framer Motion, Node.js, Express.js, and MongoDB, it uses the YouTube API and yt-dlp for high-quality, legal streaming. Featuring user authentication, a personalized dashboard, live search, responsive design, and dark mode, Moodify offers a seamless, intelligent, and modern way to enjoy music tailored to your emotions — anytime, anywhere. With real-time mood detection and smooth animations, it turns your feelings into a personalized music experience."
-          src={home} 
+          PingUp is a full-stack social media platform built with React, Node.js, and MongoDB that connects people through real-time posts, stories, and messaging. It features a dynamic feed, 24-hour stories, instant chat, and secure Clerk authentication. With ImageKit for media uploads, Inngest for background jobs, and Server-Sent Events for real-time updates, PingUp offers a fast, modern, and engaging social experience focused on authentic connections."
+          src={project6}
         />
         <ProjectsCard
           title="AI Powered ECommerce Platform"
@@ -59,12 +59,12 @@ const Projects = () => {
           src={project5}
         />
         <ProjectsCard
-          title="Pingup Social Media Platform"
-          githubLink="https://github.com/Pratik-Bavche/Pingup-social-media"
-          liveLink="pingup-social-media.vercel.app/"
+          title="Moodify Music App"
+          githubLink="https://github.com/Pratik-Bavche/Moodify_Music_App"
+          liveLink="moodify-music-web-app-client.vercel.app"
           des="
-          PingUp is a full-stack social media platform built with React, Node.js, and MongoDB that connects people through real-time posts, stories, and messaging. It features a dynamic feed, 24-hour stories, instant chat, and secure Clerk authentication. With ImageKit for media uploads, Inngest for background jobs, and Server-Sent Events for real-time updates, PingUp offers a fast, modern, and engaging social experience focused on authentic connections."
-          src={project6}
+          Moodify is a full-stack, AI-powered music streaming app that detects your mood via webcam or manual input and recommends songs accordingly. Built with React.js, Tailwind CSS, Framer Motion, Node.js, Express.js, and MongoDB, it uses the YouTube API and yt-dlp for high-quality, legal streaming. Featuring user authentication, a personalized dashboard, live search, responsive design, and dark mode, Moodify offers a seamless, intelligent, and modern way to enjoy music tailored to your emotions — anytime, anywhere. With real-time mood detection and smooth animations, it turns your feelings into a personalized music experience."
+          src={home} 
         />
       </div>
     </section>
