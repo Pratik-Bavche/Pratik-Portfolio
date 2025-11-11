@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HiOutlineDownload } from 'react-icons/hi';
 import Title from '../layouts/Title';
 import Education from './Education';
 import Skills from './Skills';
@@ -11,8 +12,19 @@ const Resume = () => {
 
   return (
     <section id="resume" className="w-full py-20 border-b-[1px] border-b-black">
-      <div className="flex justify-center items-center text-center">
+      <div className="flex flex-col justify-center items-center text-center gap-4">
         <Title des="My Resume" />
+        {/* Download resume button - place your resume PDF at public/resume.pdf or update the href below */}
+        <a
+          href="/resume.pdf"
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full shadow-md hover:scale-105 transform transition-transform duration-200"
+        >
+          <HiOutlineDownload className="w-4 h-4" />
+          Download Resume
+        </a>
       </div>
 
       <div>
