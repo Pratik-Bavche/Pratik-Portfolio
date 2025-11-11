@@ -4,7 +4,16 @@ import { FaGlobe } from "react-icons/fa";
 
 // This component is used to create a card for each project in the portfolio
 // It displays the project image, title, description, and links to GitHub and live site
-const ProjectsCard = ({ title, des, src }) => {
+const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
+
+  // Ensure link has a protocol so the browser will open it correctly
+  const normalizeUrl = (url) => {
+    if (!url) return "";
+    // trim whitespace
+    const trimmed = url.trim();
+    if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed;
+    return `https://${trimmed}`;
+  };
   return (
     <div className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-gray-900 hover:to-gray-900 transition-colors duration-1000">
       <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
@@ -21,12 +30,35 @@ const ProjectsCard = ({ title, des, src }) => {
               {title}
             </h3>
             <div className="flex gap-2">
-              <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300 cursor-pointer">
-                <BsGithub />
-              </span>
-              <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300 cursor-pointer">
-                <FaGlobe />
-              </span>
+              {githubLink ? (
+                <a
+                  href={normalizeUrl(githubLink)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300"
+                >
+                  <BsGithub />
+                </a>
+              ) : (
+                <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-500 opacity-60 cursor-not-allowed">
+                  <BsGithub />
+                </span>
+              )}
+
+              {liveLink ? (
+                <a
+                  href={normalizeUrl(liveLink)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300"
+                >
+                  <FaGlobe />
+                </a>
+              ) : (
+                <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-500 opacity-60 cursor-not-allowed">
+                  <FaGlobe />
+                </span>
+              )}
             </div>
           </div>
           <p className="text-sm tracking-wide mt-3 hover:text-gray-100 duration-300">
