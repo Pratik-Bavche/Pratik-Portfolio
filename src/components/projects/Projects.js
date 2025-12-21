@@ -7,6 +7,7 @@ import project4 from "../../assets/images/project4.png"
 import project5 from "../../assets/images/project5.png"
 import project6 from "../../assets/images/project6.png"
 import Schedra from "../../assets/images/Schedra.png"
+import Xpeero from "../../assets/images/filesharing.png"
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -27,6 +28,13 @@ const Projects = () => {
           liveLink="https://schedra-predict-plan-deliver-client.vercel.app/dashboard"
           des="Schedra is an AI-powered project scheduling and management platform that uses Google Gemini AI to predict budget risks, schedule delays, and project bottlenecks. It offers real-time what-if simulations, interactive dashboards, and risk heatmaps to help teams plan smarter. Demo projects are included, and users can also test their own projects—no login or signup required."
           src={Schedra}
+        />
+        <ProjectsCard
+          title="xpeero - an file sharing platform"
+          githubLink="https://github.com/Pratik-Bavche/File-Sharing-Platform"
+          liveLink="https://xpeero.vercel.app/home"
+          des="xpeero is a full-stack file sharing platform built with React, Node.js, and MongoDB that allows users to upload, share, and manage files easily. It features a modern UI, secure authentication (JWT, bcrypt, Google OAuth2), and file management with file size limits and download counts. Users can upload files, share them with others, and track file usage. It also include user create rooms and share files with others in rooms."
+          src={Xpeero}
         />
         <ProjectsCard
           title="AI Website Generator"
