@@ -38,7 +38,7 @@ const Projects = () => {
           src={Xpeero}
         />
         <ProjectsCard
-          title="E Learning Appliaction user enter prompt select points and genrate cources"
+          title="E-Learning Appliaction"
           githubLink="https://github.com/Pratik-Bavche/React-Native-E-Learning-App"
           liveLink="https://e-learning-app-pratik--7dr6kubyq5.expo.app/"
           des="AI-based e-learning application where users enter a prompt to generate learning points, select topics, and create personalized courses. The system offers quizzes, flashcards, question–answer modules, progress tracking, and access to multiple courses for effective and interactive learning. It enhances understanding through adaptive content and continuous assessment, providing a flexible and learner-centered educational experience."
