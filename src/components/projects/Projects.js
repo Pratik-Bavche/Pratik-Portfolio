@@ -53,7 +53,7 @@ const Projects = () => {
         <ProjectsCard
           title="AI Resume Builder"
           githubLink="https://github.com/Pratik-Bavche/AI-Based-Resume-Generator"
-          liveLink="ai-powered-e-commerce-client.vercel.app/"
+          liveLink="ai-based-resume-generator-delta.vercel.app/"
           des="
         AI Resume Builder is a full-stack web app that helps users create and enhance professional, ATS-friendly resumes in minutes using AI and automated image processing. Built with React, Node.js, Express, and MongoDB, it lets users upload old resumes, extract and edit content with AI, and generate polished results instantly. Featuring multiple templates, secure JWT auth, and ImageKit for face-cropping and background removal, it offers a fast, smart, and modern way to build recruiter-ready resumes effortlessly."
           src={project4}
