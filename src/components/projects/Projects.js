@@ -6,6 +6,7 @@ import project3 from "../../assets/images/project3.png"
 import project4 from "../../assets/images/project4.png"
 import project5 from "../../assets/images/project5.png"
 import project6 from "../../assets/images/project6.png"
+import Schedra from "../../assets/images/Schedra.png"
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -20,6 +21,13 @@ const Projects = () => {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
+        <ProjectsCard
+          title="Schedra - an AI-powered project scheduling and management platform"
+          githubLink="https://github.com/Pratik-Bavche/Schedra-Predict_Plan_Deliver"
+          liveLink="https://schedra-predict-plan-deliver-client.vercel.app/dashboard"
+          des="Schedra is an AI-powered project scheduling and management platform that uses Google Gemini AI to predict budget risks, schedule delays, and project bottlenecks. It offers real-time what-if simulations, interactive dashboards, and risk heatmaps to help teams plan smarter. Demo projects are included, and users can also test their own projects—no login or signup required."
+          src={Schedra}
+        />
         <ProjectsCard
           title="AI Website Generator"
           githubLink="https://github.com/Pratik-Bavche/AI-Website-Generator"
