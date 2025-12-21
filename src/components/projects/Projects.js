@@ -8,6 +8,7 @@ import project5 from "../../assets/images/project5.png"
 import project6 from "../../assets/images/project6.png"
 import Schedra from "../../assets/images/Schedra.png"
 import Xpeero from "../../assets/images/filesharing.png"
+import elearning from "../../assets/images/elearning.png"
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -35,6 +36,13 @@ const Projects = () => {
           liveLink="https://xpeero.vercel.app/home"
           des="xpeero is a full-stack file sharing platform built with React, Node.js, and MongoDB that allows users to upload, share, and manage files easily. It features a modern UI, secure authentication (JWT, bcrypt, Google OAuth2), and file management with file size limits and download counts. Users can upload files, share them with others, and track file usage. It also include user create rooms and share files with others in rooms."
           src={Xpeero}
+        />
+        <ProjectsCard
+          title="E Learning Appliaction user enter prompt select points and genrate cources"
+          githubLink="https://github.com/Pratik-Bavche/React-Native-E-Learning-App"
+          liveLink="https://e-learning-app-pratik--7dr6kubyq5.expo.app/"
+          des="AI-based e-learning application where users enter a prompt to generate learning points, select topics, and create personalized courses. The system offers quizzes, flashcards, question–answer modules, progress tracking, and access to multiple courses for effective and interactive learning. It enhances understanding through adaptive content and continuous assessment, providing a flexible and learner-centered educational experience."
+          src={elearning}
         />
         <ProjectsCard
           title="AI Website Generator"
