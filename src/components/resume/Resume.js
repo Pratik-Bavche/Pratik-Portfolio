@@ -4,7 +4,7 @@ import Title from '../layouts/Title';
 import Education from './Education';
 import Skills from './Skills';
 import Experience from "./Experience";
-import PratikResume from '../../assets/PratikResume.pdf'
+import PratikBavcheResume from '../../assets/PratikBavcheResume.pdf'
 
 const Resume = () => {
    const [educationData, setEducationData] = useState(true);
@@ -17,7 +17,7 @@ const Resume = () => {
         <Title des="My Resume" />
         {/* Download resume button. The PDF is imported above from src/assets; use the imported variable as the href */}
         <a
-          href={PratikResume}
+          href={PratikBavcheResume}
           download
           target="_blank"
           rel="noopener noreferrer"
