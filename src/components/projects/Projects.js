@@ -8,6 +8,7 @@ import project5 from "../../assets/images/project5.png"
 import project6 from "../../assets/images/project6.png"
 import Schedra from "../../assets/images/Schedra.png"
 import Xpeero from "../../assets/images/filesharing.png"
+import AlgoView from "../../assets/images/algoview.png"
 import elearning from "../../assets/images/elearning.png"
 import ProjectsCard from './ProjectsCard';
 
@@ -40,9 +41,16 @@ const Projects = () => {
         <ProjectsCard
           title="E-Learning Appliaction"
           githubLink="https://e-learning-app--09b3lsf49l.expo.app"
-          liveLink="https://e-learning-application--9xht4bp79q.expo.app"
+          liveLink="https://e-learning-application--9xht4bp79q.expo.appx"
           des="AI-based e-learning application where users enter a prompt to generate learning points, select topics, and create personalized courses. The system offers quizzes, flashcards, question–answer modules, progress tracking, and access to multiple courses for effective and interactive learning. It enhances understanding through adaptive content and continuous assessment, providing a flexible and learner-centered educational experience."
           src={elearning}
+        />
+        <ProjectsCard
+          title="AlgoView – An Algorithm Visualization Platform"
+          githubLink="https://github.com/Pratik-Bavche/AlgoView-A-Platform-to-Visualize-Algorithms"
+          liveLink="https://algo-view-algorithms-visulizer.vercel.app/"
+          des="AlgoView is an interactive algorithm visualization platform designed to help students and learners understand how algorithms work internally through step-by-step visual animations, graph representations, and data structure simulations. With features like custom inputs, multiple visualization methods, problem visualization, progress tracking, and an intuitive dashboard, the platform makes complex concepts easier to grasp and supports effective learning for academic and practical use."
+          src={AlgoView}
         />
         <ProjectsCard
           title="AI Website Generator"
