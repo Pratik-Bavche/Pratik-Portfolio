@@ -4,7 +4,7 @@ import Title from '../layouts/Title';
 import Education from './Education';
 import Skills from './Skills';
 import Experience from "./Experience";
-import PratikBavcheResume from '../../assets/PratikBavcheResume.pdf'
+import PratikBavcheResume from "../../assets/PratikBavcheResume.pdf"
 
 const Resume = () => {
    const [educationData, setEducationData] = useState(true);
