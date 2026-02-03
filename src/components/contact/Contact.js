@@ -20,7 +20,7 @@ const Contact = () => {
   };
   // ========== Email Validation end here ================
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
     if (username === "") {
       setErrMsg("Username is required!");
@@ -35,15 +35,45 @@ const Contact = () => {
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
-      );
-      setErrMsg("");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      // =========================================================================
+      // ⚠️ IMPORTANT: EMAIL FUNCTIONALITY WILL NOT WORK WITHOUT A VALID ACCESS KEY
+      // 1. Go to https://web3forms.com/
+      // 2. Enter "pratikbavche2005@gmail.com"
+      // 3. Copy the Access Key sent to your email
+      // 4. Paste it below inside the quotes where it says YOUR_ACCESS_KEY_HERE
+      // =========================================================================
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_ACCESS_KEY_HERE",
+          name: username,
+          phone: phoneNumber,
+          email: email,
+          subject: subject,
+          message: message,
+        }),
+      }).then((res) => res.json());
+
+      console.log("Web3Forms Response:", res);
+
+      if (res.success) {
+        setSuccessMsg(
+          `Thank you! Your Messages has been sent Successfully!`
+        );
+        setErrMsg("");
+        setUsername("");
+        setPhoneNumber("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      } else {
+        setErrMsg("Something went wrong! Please try again.");
+      }
     }
   };
   return (
@@ -59,16 +89,7 @@ const Contact = () => {
           <ContactLeft />
           <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
             <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
-              {errMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                  {errMsg}
-                </p>
-              )}
-              {successMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                  {successMsg}
-                </p>
-              )}
+
               <div className="w-full flex flex-col lgl:flex-row gap-10">
                 <div className="w-full lgl:w-1/2 flex flex-col gap-4">
                   <p className="text-sm text-gray-400 uppercase tracking-wide">
@@ -81,6 +102,7 @@ const Contact = () => {
                       "outline-designColor"
                       } contactInput`}
                     type="text"
+                    required
                   />
                 </div>
                 <div className="w-full lgl:w-1/2 flex flex-col gap-4">
@@ -94,6 +116,7 @@ const Contact = () => {
                       "outline-designColor"
                       } contactInput`}
                     type="text"
+                    required
                   />
                 </div>
               </div>
@@ -108,6 +131,7 @@ const Contact = () => {
                     "outline-designColor"
                     } contactInput`}
                   type="email"
+                  required
                 />
               </div>
               <div className="flex flex-col gap-4">
@@ -134,6 +158,7 @@ const Contact = () => {
                     } contactTextArea`}
                   cols="30"
                   rows="8"
+                  required
                 ></textarea>
               </div>
               <div className="w-full">

@@ -31,7 +31,7 @@ const ContactLeft = () => {
       <div className="flex flex-col gap-4">
         <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
         <div className="flex gap-4">
-          <span className="bannerIcon hover:text-[#0077b5]">
+          <span className="bannerIcon text-[#0077b5] lgl:text-gray-200 lgl:hover:text-[#0077b5]">
             <a
               href="https://www.linkedin.com/in/pratik-bavche-b6b696325/"
               target="_blank"
@@ -40,7 +40,7 @@ const ContactLeft = () => {
               <FaLinkedinIn />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#6e5494]">
+          <span className="bannerIcon text-[#6e5494] lgl:text-gray-200 lgl:hover:text-[#6e5494]">
             <a
               href="https://github.com/Pratik-Bavche"
               target="_blank"
@@ -49,7 +49,7 @@ const ContactLeft = () => {
               <FaGithub />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#1da1f2]">
+          <span className="bannerIcon text-[#1da1f2] lgl:text-gray-200 lgl:hover:text-[#1da1f2]">
             <a
               href="https://x.com/Pratik_Bavche"
               target="_blank"
@@ -58,7 +58,7 @@ const ContactLeft = () => {
               <FaTwitter />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#e4405f]">
+          <span className="bannerIcon text-[#e4405f] lgl:text-gray-200 lgl:hover:text-[#e4405f]">
             <a
               href="https://www.instagram.com/bavche_pratik"
               target="_blank"
@@ -67,7 +67,7 @@ const ContactLeft = () => {
               <FaInstagram />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#1877f2]">
+          <span className="bannerIcon text-[#1877f2] lgl:text-gray-200 lgl:hover:text-[#1877f2]">
             <a
               href="https://facebook.com/pratik_bavche_patil"
               target="_blank"
