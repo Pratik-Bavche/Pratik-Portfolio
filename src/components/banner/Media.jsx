@@ -21,7 +21,7 @@ const Media = () => {
           Find me in
         </h2>
         <div className="flex gap-4">
-          <span className="bannerIcon hover:text-[#0077b5]">
+          <span className="bannerIcon text-[#0077b5] lgl:text-gray-200 lgl:hover:text-[#0077b5]">
             <a
               href="https://www.linkedin.com/in/pratik-bavche-b6b696325/"
               target="_blank"
@@ -30,7 +30,7 @@ const Media = () => {
               <FaLinkedinIn />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#6e5494]">
+          <span className="bannerIcon text-[#6e5494] lgl:text-gray-200 lgl:hover:text-[#6e5494]">
             <a
               href="https://github.com/Pratik-Bavche"
               target="_blank"
@@ -39,7 +39,7 @@ const Media = () => {
               <FaGithub />
             </a>
           </span>
-          <span className="bannerIcon hover:text-[#1da1f2]">
+          <span className="bannerIcon text-[#1da1f2] lgl:text-gray-200 lgl:hover:text-[#1da1f2]">
             <a
               href="https://x.com/Pratik_Bavche"
               target="_blank"
@@ -48,7 +48,7 @@ const Media = () => {
               <FaTwitter />
             </a>
           </span>
-          <span className="bannerIcon">
+          <span className="bannerIcon text-[#e4405f] lgl:text-gray-200 lgl:hover:text-[#e4405f]">
             <a
               href="https://www.instagram.com/bavche_pratik"
               target="_blank"

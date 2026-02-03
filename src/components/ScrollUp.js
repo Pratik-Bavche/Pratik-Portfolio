@@ -25,7 +25,7 @@ const ScrollUp = () => {
 
     return (
         <div
-            className={`fixed right-10 bottom-10 z-50 cursor-pointer w-12 h-12 bg-[#141518] rounded-full border-[1px] border-designColor text-designColor flex justify-center items-center shadow-shadowOne hover:bg-designColor hover:text-white duration-300 transition-all ${showScroll ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-5"
+            className={`fixed right-10 bottom-10 z-50 cursor-pointer w-12 h-12 bg-[#141518] rounded-full border-[1px] border-designColor text-designColor flex justify-center items-center hover:bg-designColor hover:text-white duration-300 transition-all ${showScroll ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-5"
                 }`}
             onClick={scrollTop}
         >

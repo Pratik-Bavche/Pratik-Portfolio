@@ -20,7 +20,7 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`w-10 h-10 lgl:w-14 lgl:h-12 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-xl lgl:text-2xl text-gray-400 flex justify-center items-center absolute -top-16 lgl:-top-20 right-2 lgl:right-5 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518] ${className}`}
+      className={`w-14 h-14 lgl:w-16 lgl:h-16 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-2xl lgl:text-3xl text-gray-400 flex justify-center items-center absolute !top-auto !bottom-[-40px] !transform-none !right-auto !left-1/2 !ml-4 lgl:!ml-0 lgl:!top-[-80px] lgl:!bottom-auto lgl:!left-auto lgl:!right-5 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518] ${className}`}
       style={{ ...style, display: props.onClick ? "flex" : "none" }}
       onClick={onClick}
     >
@@ -33,7 +33,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`w-10 h-10 lgl:w-14 lgl:h-12 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-xl lgl:text-2xl text-gray-400 flex justify-center items-center absolute -top-16 lgl:-top-20 right-14 lgl:right-24 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518] ${className}`}
+      className={`w-14 h-14 lgl:w-16 lgl:h-16 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-2xl lgl:text-3xl text-gray-400 flex justify-center items-center absolute !top-auto !bottom-[-40px] !transform-none !left-auto !right-1/2 !mr-4 lgl:!mr-0 lgl:!top-[-80px] lgl:!bottom-auto lgl:!left-auto lgl:!right-24 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518] ${className}`}
       style={{ ...style, display: props.onClick ? "flex" : "none" }}
       onClick={onClick}
     >

@@ -83,7 +83,7 @@ const LeftBanner = () => {
         </p>
         <div className="mt-6 lgl:mt-4">
           <a href={PratikBavcheResume} target="_blank" rel="noopener noreferrer">
-            <button className="w-full lgl:w-[200px] h-12 bg-[#141518] shadow-shadowOne text-base font-normal text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 hover:scale-105 active:scale-95 border border-transparent hover:border-designColor rounded-lg group flex justify-center items-center gap-3 transition-all">
+            <button className="w-full lgl:w-[200px] h-12 bg-[#141518] shadow-shadowOne text-base font-normal text-white lgl:text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 hover:scale-105 active:scale-95 border border-designColor lgl:border-transparent hover:border-designColor rounded-lg group flex justify-center items-center gap-3 transition-all">
               Download CV <span className="text-xl group-hover:translate-y-1 group-active:translate-y-2 transition-transform duration-300"><HiOutlineDownload /></span>
             </button>
           </a>

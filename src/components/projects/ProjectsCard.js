@@ -35,7 +35,7 @@ const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
                   href={normalizeUrl(githubLink)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300"
+                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-designColor lgl:text-gray-400 lgl:hover:text-designColor duration-300"
                 >
                   <BsGithub />
                 </a>
@@ -50,7 +50,7 @@ const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
                   href={normalizeUrl(liveLink)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-400 hover:text-designColor duration-300"
+                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-designColor lgl:text-gray-400 lgl:hover:text-designColor duration-300"
                 >
                   <FaGlobe />
                 </a>
@@ -61,7 +61,7 @@ const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
               )}
             </div>
           </div>
-          <p className="text-sm tracking-wide mt-3 hover:text-gray-100 duration-300 h-auto md:h-[100px] overflow-hidden">
+          <p className="text-sm tracking-wide mt-3 text-gray-100 lgl:text-gray-400 lgl:hover:text-gray-100 duration-300 h-auto md:h-[100px] overflow-hidden">
             {des}
           </p>
         </div>

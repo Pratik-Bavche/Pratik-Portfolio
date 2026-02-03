@@ -12,7 +12,7 @@ import ScrollUp from "./components/ScrollUp";
 
 function App() {
   return (
-    <div className="w-full h-auto bg-bodyColor text-lightText px-4 relative">
+    <div className="w-full h-auto bg-bodyColor text-lightText px-4 relative overflow-x-hidden">
       <Cursor />
       <ScrollUp />
       <Navbar />

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Title from '../layouts/Title';
 import ContactLeft from './ContactLeft';
 
@@ -77,10 +77,9 @@ const Contact = () => {
                   <input
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
-                    className={`${
-                      errMsg === "Username is required!" &&
+                    className={`${errMsg === "Username is required!" &&
                       "outline-designColor"
-                    } contactInput`}
+                      } contactInput`}
                     type="text"
                   />
                 </div>
@@ -91,10 +90,9 @@ const Contact = () => {
                   <input
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
-                    className={`${
-                      errMsg === "Phone number is required!" &&
+                    className={`${errMsg === "Phone number is required!" &&
                       "outline-designColor"
-                    } contactInput`}
+                      } contactInput`}
                     type="text"
                   />
                 </div>
@@ -106,10 +104,9 @@ const Contact = () => {
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className={`${
-                    errMsg === "Please give your Email!" &&
+                  className={`${errMsg === "Please give your Email!" &&
                     "outline-designColor"
-                  } contactInput`}
+                    } contactInput`}
                   type="email"
                 />
               </div>
@@ -120,10 +117,9 @@ const Contact = () => {
                 <input
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
-                  className={`${
-                    errMsg === "Please give your Subject!" &&
+                  className={`${errMsg === "Please give your Subject!" &&
                     "outline-designColor"
-                  } contactInput`}
+                    } contactInput`}
                   type="text"
                 />
               </div>
@@ -134,9 +130,8 @@ const Contact = () => {
                 <textarea
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
-                  className={`${
-                    errMsg === "Message is required!" && "outline-designColor"
-                  } contactTextArea`}
+                  className={`${errMsg === "Message is required!" && "outline-designColor"
+                    } contactTextArea`}
                   cols="30"
                   rows="8"
                 ></textarea>
@@ -144,7 +139,7 @@ const Contact = () => {
               <div className="w-full">
                 <button
                   onClick={handleSend}
-                  className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                  className="w-full h-12 bg-[#141518] rounded-lg text-base text-white lgl:text-gray-400 tracking-wider uppercase hover:text-white duration-300 border-[1px] border-designColor lgl:border-transparent hover:border-designColor"
                 >
                   Send Message
                 </button>
