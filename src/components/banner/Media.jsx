@@ -1,7 +1,6 @@
 // imports of media icons
 import React from "react";
 import {
-  FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
   FaReact,
