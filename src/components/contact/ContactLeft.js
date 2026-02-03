@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa";
-import contactImg  from "../../assets/images/contact/contactImg.jpg";
+import contactImg from "../../assets/images/contact/contactImg.jpg";
 
 const ContactLeft = () => {
   return (
@@ -18,7 +18,7 @@ const ContactLeft = () => {
           MERN Stack Developer
         </p>
         <p className="text-base text-gray-400 tracking-wide">
-         I enjoy building full-featured applications using the MERN Stack, turning ideas into practical and interactive solutions. By combining MongoDB, Express, React, and Node.js, I focus on creating apps that are fast, secure, and easy to use. My goal is to deliver digital experiences that are both reliable and engaging, exceeding expectations with every project.
+          I enjoy building full-featured applications using the MERN Stack, turning ideas into practical and interactive solutions. By combining MongoDB, Express, React, and Node.js, I focus on creating apps that are fast, secure, and easy to use. My goal is to deliver digital experiences that are both reliable and engaging, exceeding expectations with every project.
         </p>
         <p className="text-base text-gray-400 flex items-center gap-2">
           Phone: <span className="text-lightText">8010200739</span>
@@ -31,25 +31,7 @@ const ContactLeft = () => {
       <div className="flex flex-col gap-4">
         <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
         <div className="flex gap-4">
-          <span className="bannerIcon">
-            <a
-              href="https://facebook.com/pratik_bavche_patil"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF />
-            </a>
-          </span>
-          <span className="bannerIcon">
-            <a
-              href="https://x.com/Pratik_Bavche"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter />
-            </a>
-          </span>
-          <span className="bannerIcon">
+          <span className="bannerIcon hover:text-[#0077b5]">
             <a
               href="https://www.linkedin.com/in/pratik-bavche-b6b696325/"
               target="_blank"
@@ -58,7 +40,7 @@ const ContactLeft = () => {
               <FaLinkedinIn />
             </a>
           </span>
-          <span className="bannerIcon">
+          <span className="bannerIcon hover:text-[#6e5494]">
             <a
               href="https://github.com/Pratik-Bavche"
               target="_blank"
@@ -67,13 +49,31 @@ const ContactLeft = () => {
               <FaGithub />
             </a>
           </span>
-          <span className="bannerIcon">
+          <span className="bannerIcon hover:text-[#1da1f2]">
             <a
-              href="https://instagram.com/pratik_bavche_patil"
+              href="https://x.com/Pratik_Bavche"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </a>
+          </span>
+          <span className="bannerIcon hover:text-[#e4405f]">
+            <a
+              href="https://www.instagram.com/bavche_pratik"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaInstagram />
+            </a>
+          </span>
+          <span className="bannerIcon hover:text-[#1877f2]">
+            <a
+              href="https://facebook.com/pratik_bavche_patil"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF />
             </a>
           </span>
         </div>

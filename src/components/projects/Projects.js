@@ -1,18 +1,173 @@
-import React from 'react'
-import Title from '../layouts/Title'
-import home from "../../assets/images/home.png"
-import project2 from "../../assets/images/project2.png"
-import project3 from "../../assets/images/project3.png"
-import project4 from "../../assets/images/project4.png"
-import project5 from "../../assets/images/project5.png"
-import project6 from "../../assets/images/project6.png"
-import Schedra from "../../assets/images/Schedra.png"
-import Xpeero from "../../assets/images/filesharing.png"
-import AlgoView from "../../assets/images/algoview.png"
-import elearning from "../../assets/images/elearning.png"
+import React, { useRef } from 'react';
+import Title from '../layouts/Title';
+import Slider from "react-slick";
+import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
+import home from "../../assets/images/home.png";
+import project2 from "../../assets/images/project2.png";
+import project3 from "../../assets/images/project3.png";
+import project4 from "../../assets/images/project4.png";
+import project5 from "../../assets/images/project5.png";
+import project6 from "../../assets/images/project6.png";
+import Schedra from "../../assets/images/Schedra.png";
+import Xpeero from "../../assets/images/filesharing.png";
+import AlgoView from "../../assets/images/algoview.png";
+import elearning from "../../assets/images/elearning.png";
 import ProjectsCard from './ProjectsCard';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className="w-10 h-10 lgl:w-14 lgl:h-12 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-xl lgl:text-2xl text-gray-400 flex justify-center items-center absolute -top-16 lgl:-top-20 right-2 lgl:right-5 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518]"
+      style={{ ...style, display: props.onClick ? "flex" : "none" }}
+      onClick={onClick}
+    >
+      <HiArrowRight />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className="w-10 h-10 lgl:w-14 lgl:h-12 bg-[#0c1825] hover:bg-black duration-300 rounded-md text-xl lgl:text-2xl text-gray-400 flex justify-center items-center absolute -top-16 lgl:-top-20 right-14 lgl:right-24 shadow-shadowOne cursor-pointer z-10 hover:text-designColor active:bg-[#141518]"
+      style={{ ...style, display: props.onClick ? "flex" : "none" }}
+      onClick={onClick}
+    >
+      <HiArrowLeft />
+    </div>
+  );
+}
+
+
 
 const Projects = () => {
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 667,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+    ],
+  };
+
+  const projectsData = [
+    {
+      title: "Schedra - an AI-powered project scheduling and management platform",
+      des: "AI-powered scheduling platform using Google Gemini to predict risks and bottlenecks. Features real-time simulations, dashboards, and risk heatmaps for smarter management.",
+      src: Schedra,
+      github: "https://github.com/Pratik-Bavche/Schedra-Predict_Plan_Deliver",
+      live: "https://schedra-predict-plan-deliver-client.vercel.app/dashboard"
+    },
+    {
+      title: "xpeero - an file sharing platform",
+      des: "Full-stack file sharing platform offering secure auth, room-based sharing, and easy management. Built with React, Node.js, and MongoDB for seamless uploading and tracking.",
+      src: Xpeero,
+      github: "https://github.com/Pratik-Bavche/File-Sharing-Platform",
+      live: "https://xpeero.vercel.app/home"
+    },
+    {
+      title: "E-Learning Appliaction",
+      des: "AI-driven app that generates personalized courses from user prompts. Features quizzes, flashcards, and progress tracking to create a flexible, learner-centered experience.",
+      src: elearning,
+      github: "https://e-learning-app--09b3lsf49l.expo.app",
+      live: "https://e-learning-application--9xht4bp79q.expo.appx"
+    },
+    {
+      title: "AlgoView - An Algorithm Visualization Platform",
+      des: "Interactive platform for visualizing algorithms via step-by-step animations and graphs. Helps students grasp complex concepts through custom inputs and data simulations.",
+      src: AlgoView,
+      github: "https://github.com/Pratik-Bavche/AlgoView-A-Platform-to-Visualize-Algorithms",
+      live: "https://algo-view-algorithms-visulizer.vercel.app/"
+    },
+    {
+      title: "AI Website Generator",
+      des: "Full-stack app powering instant no-code website creation with Gemini 2.0 Flash. Generates responsive HTML sites from text, featuring live previews and advanced AI tools.",
+      src: project2,
+      github: "https://github.com/Pratik-Bavche/AI-Website-Generator",
+      live: "ai-website-generator-web.vercel.app/"
+    },
+    {
+      title: "Pingup Social Media Platform",
+      des: "Full-stack social platform with real-time posts, stories, and chat functions. Features secure auth, dynamic feeds, and instant messaging for truly authentic connections.",
+      src: project6,
+      github: "https://github.com/Pratik-Bavche/Pingup-social-media",
+      live: "pingup-social-media.vercel.app/"
+    },
+    {
+      title: "AI Powered ECommerce Platform",
+      des: "Intelligent shopping solution with personalized recommendations and AI support. Features secure payments, real-time cart updates, and a modern responsive user interface.",
+      src: project3,
+      github: "https://github.com/Pratik-Bavche/AI-Powered-E-Commerce",
+      live: "ai-powered-e-commerce-client.vercel.app/"
+    },
+    {
+      title: "AI Resume Builder",
+      des: "Create professional, ATS-friendly resumes in minutes using AI automation. Features content extraction, face-cropping, and multiple templates for instant, polished results.",
+      src: project4,
+      github: "https://github.com/Pratik-Bavche/AI-Based-Resume-Generator",
+      live: "ai-based-resume-generator-delta.vercel.app/"
+    },
+    {
+      title: "QuickGPT",
+      des: "Full-stack AI SaaS for affordable text and image generation services. Combines Stripe payments, credit tracking, and Gemini Flash for instant, high-quality AI results.",
+      src: project5,
+      github: "https://github.com/Pratik-Bavche/Quick-GPT",
+      live: "quick-gpt-client-eight.vercel.app/"
+    },
+    {
+      title: "Moodify Music App",
+      des: "AI-powered music app that detects your mood via webcam to recommend songs. Features high-quality streaming, live search functionalities, and a fully personalized dashboard.",
+      src: home,
+      github: "https://github.com/Pratik-Bavche/Moodify_Music_App",
+      live: "moodify-music-web-app-client.vercel.app"
+    }
+  ];
+
+  // Throttled scroll handler
+  let isScrolling = false;
+  const handleScroll = (e) => {
+    // Check if horizontal scroll is dominant (like trackpad) OR if standard vertical scroll should control it
+    // Given user text "scroll through mouse horizontally", they likely mean trackpad horizontal gestures
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      if (isScrolling) return;
+      isScrolling = true;
+      setTimeout(() => { isScrolling = false; }, 500);
+
+      // Prevent default browser history navigation on scroll
+      // e.preventDefault(); // can't prevent default on passive listener, but React synthetic events might handle it differently. 
+      // For now, just trigger slide.
+
+      if (e.deltaX > 0) {
+        sliderRef.current.slickNext();
+      } else {
+        sliderRef.current.slickPrev();
+      }
+    }
+  };
+
   return (
     <section
       id="projects"
@@ -23,84 +178,23 @@ const Projects = () => {
           des="My Projects"
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
-        <ProjectsCard
-          title="Schedra - an AI-powered project scheduling and management platform"
-          githubLink="https://github.com/Pratik-Bavche/Schedra-Predict_Plan_Deliver"
-          liveLink="https://schedra-predict-plan-deliver-client.vercel.app/dashboard"
-          des="Schedra is an AI-powered project scheduling and management platform that uses Google Gemini AI to predict budget risks, schedule delays, and project bottlenecks. It offers real-time what-if simulations, interactive dashboards, and risk heatmaps to help teams plan smarter. Demo projects are included, and users can also test their own projects—no login or signup required."
-          src={Schedra}
-        />
-        <ProjectsCard
-          title="xpeero - an file sharing platform"
-          githubLink="https://github.com/Pratik-Bavche/File-Sharing-Platform"
-          liveLink="https://xpeero.vercel.app/home"
-          des="xpeero is a full-stack file sharing platform built with React, Node.js, and MongoDB that allows users to upload, share, and manage files easily. It features a modern UI, secure authentication (JWT, bcrypt, Google OAuth2), and file management with file size limits and download counts. Users can upload files, share them with others, and track file usage. It also include user create rooms and share files with others in rooms."
-          src={Xpeero}
-        />
-        <ProjectsCard
-          title="E-Learning Appliaction"
-          githubLink="https://e-learning-app--09b3lsf49l.expo.app"
-          liveLink="https://e-learning-application--9xht4bp79q.expo.appx"
-          des="AI-based e-learning application where users enter a prompt to generate learning points, select topics, and create personalized courses. The system offers quizzes, flashcards, question–answer modules, progress tracking, and access to multiple courses for effective and interactive learning. It enhances understanding through adaptive content and continuous assessment, providing a flexible and learner-centered educational experience."
-          src={elearning}
-        />
-        <ProjectsCard
-          title="AlgoView – An Algorithm Visualization Platform"
-          githubLink="https://github.com/Pratik-Bavche/AlgoView-A-Platform-to-Visualize-Algorithms"
-          liveLink="https://algo-view-algorithms-visulizer.vercel.app/"
-          des="AlgoView is an interactive algorithm visualization platform designed to help students and learners understand how algorithms work internally through step-by-step visual animations, graph representations, and data structure simulations. With features like custom inputs, multiple visualization methods, problem visualization, progress tracking, and an intuitive dashboard, the platform makes complex concepts easier to grasp and supports effective learning for academic and practical use."
-          src={AlgoView}
-        />
-        <ProjectsCard
-          title="AI Website Generator"
-          githubLink="https://github.com/Pratik-Bavche/AI-Website-Generator"
-          liveLink="ai-website-generator-web.vercel.app/"
-          des="AI Website Generator is a full-stack web app that lets anyone create professional, responsive websites instantly with zero coding. Powered by Google Gemini 2.0 Flash, it generates production-ready HTML/CSS (Tailwind) from plain English descriptions, complete with modern UI, interactivity, and business logic. Users can preview changes live, view their website, download the full code, and customize every element visually. It also includes advanced AI image tools — generate images, upload your own, or apply smart edits, styles, and effects — making it an all-in-one solution for fast, customizable website creation." 
-          src={project2}
-        />
-        <ProjectsCard
-          title="Pingup Social Media Platform"
-          githubLink="https://github.com/Pratik-Bavche/Pingup-social-media"
-          liveLink="pingup-social-media.vercel.app/"
-          des="
-          PingUp is a full-stack social media platform built with React, Node.js, and MongoDB that connects people through real-time posts, stories, and messaging. It features a dynamic feed, 24-hour stories, instant chat, and secure Clerk authentication. With ImageKit for media uploads, Inngest for background jobs, and Server-Sent Events for real-time updates, PingUp offers a fast, modern, and engaging social experience focused on authentic connections."
-          src={project6}
-        />
-        <ProjectsCard
-          title="AI Powered ECommerce Platform"
-          githubLink="https://github.com/Pratik-Bavche/AI-Powered-E-Commerce"
-          liveLink="ai-powered-e-commerce-client.vercel.app/"
-          des="AI-Powered E-Commerce Platform is a full-stack, intelligent shopping solution that offers personalized recommendations, smart admin tools, and AI-driven customer support. Built with React 19, Vite, Tailwind CSS, Node.js, Express.js, and MongoDB Atlas, it features secure authentication (JWT, bcrypt, Google OAuth2), seamless payments via Razorpay, and image management with Cloudinary. With real-time cart updates, order tracking, and a modern responsive UI, it delivers a fast, secure, and personalized shopping experience — deployed easily on Vercel, Render, and MongoDB Atlas."
-          src={project3}
-        />
-        <ProjectsCard
-          title="AI Resume Builder"
-          githubLink="https://github.com/Pratik-Bavche/AI-Based-Resume-Generator"
-          liveLink="ai-based-resume-generator-delta.vercel.app/"
-          des="
-        AI Resume Builder is a full-stack web app that helps users create and enhance professional, ATS-friendly resumes in minutes using AI and automated image processing. Built with React, Node.js, Express, and MongoDB, it lets users upload old resumes, extract and edit content with AI, and generate polished results instantly. Featuring multiple templates, secure JWT auth, and ImageKit for face-cropping and background removal, it offers a fast, smart, and modern way to build recruiter-ready resumes effortlessly."
-          src={project4}
-        />
-        <ProjectsCard
-          title="QuickGPT"
-          githubLink="https://github.com/Pratik-Bavche/Quick-GPT"
-          liveLink="quick-gpt-client-eight.vercel.app/"
-          des="
-          QuickGPT is a full-stack AI SaaS platform that makes powerful AI tools simple, fast, and affordable. Built with React, Node.js, and MongoDB, it combines AI text and image generation, Stripe payments, and real-time credit tracking in one place. Powered by Gemini 2.0 Flash and ImageKit, it delivers instant, high-quality results with transparent pricing starting at just $10/month. QuickGPT is the all-in-one platform for creators, developers, and businesses to generate, manage, and share AI content effortlessly."
-          src={project5}
-        />
-        <ProjectsCard
-          title="Moodify Music App"
-          githubLink="https://github.com/Pratik-Bavche/Moodify_Music_App"
-          liveLink="moodify-music-web-app-client.vercel.app"
-          des="
-          Moodify is a full-stack, AI-powered music streaming app that detects your mood via webcam or manual input and recommends songs accordingly. Built with React.js, Tailwind CSS, Framer Motion, Node.js, Express.js, and MongoDB, it uses the YouTube API and yt-dlp for high-quality, legal streaming. Featuring user authentication, a personalized dashboard, live search, responsive design, and dark mode, Moodify offers a seamless, intelligent, and modern way to enjoy music tailored to your emotions — anytime, anywhere. With real-time mood detection and smooth animations, it turns your feelings into a personalized music experience."
-          src={home} 
-        />
+      <div className="w-full" onWheel={handleScroll}>
+        <Slider ref={sliderRef} {...settings}>
+          {projectsData.map((project, index) => (
+            <div key={index} className="px-5">
+              <ProjectsCard
+                title={project.title}
+                des={project.des}
+                src={project.src}
+                githubLink={project.github}
+                liveLink={project.live}
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
     </section>
   );
 }
 
-export default Projects
+export default Projects;
