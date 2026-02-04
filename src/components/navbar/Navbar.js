@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
-import { MdClose, MdHome, MdApps, MdWork, MdDescription, MdContacts } from "react-icons/md";
+import { MdHome, MdApps, MdWork, MdDescription, MdContacts } from "react-icons/md";
+import { RiCloseLine } from "react-icons/ri";
 import { FaLinkedinIn, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { logo } from "../../assets/index"
 import { navLinksdata } from '../../constants';
@@ -50,7 +51,7 @@ const Navbar = () => {
           <FiMenu />
         </span>
         {showMenu && (
-          <div className="w-full h-screen overflow-hidden absolute top-0 left-0 bg-gray-900 p-4 transform transition-transform duration-500 ease-in-out">
+          <div className="w-full h-screen overflow-hidden fixed top-0 left-0 bg-gray-900 p-4 transform transition-transform duration-500 ease-in-out z-50">
             <div className="flex flex-col gap-8 py-2 relative h-full justify-center">
               <div>
                 <img className='w-16 h-16 object-contain' src={logo} alt="logo" />
@@ -92,22 +93,22 @@ const Navbar = () => {
                   Find me in
                 </h2>
                 <div className="flex gap-4">
-                  <span className="bannerIcon text-[#0077b5]">
+                  <span className="bannerIcon text-[#0077b5] shadow-none">
                     <a href="https://www.linkedin.com/in/pratik-bavche-b6b696325/" target="_blank" rel="noopener noreferrer">
                       <FaLinkedinIn />
                     </a>
                   </span>
-                  <span className="bannerIcon text-[#6e5494]">
+                  <span className="bannerIcon text-[#6e5494] shadow-none">
                     <a href="https://github.com/Pratik-Bavche" target="_blank" rel="noopener noreferrer">
                       <FaGithub />
                     </a>
                   </span>
-                  <span className="bannerIcon text-[#1da1f2]">
+                  <span className="bannerIcon text-[#1da1f2] shadow-none">
                     <a href="https://x.com/Pratik_Bavche" target="_blank" rel="noopener noreferrer">
                       <FaTwitter />
                     </a>
                   </span>
-                  <span className="bannerIcon text-[#e4405f]">
+                  <span className="bannerIcon text-[#e4405f] shadow-none">
                     <a href="https://www.instagram.com/bavche_pratik" target="_blank" rel="noopener noreferrer">
                       <FaInstagram />
                     </a>
@@ -116,9 +117,9 @@ const Navbar = () => {
               </div>
               <span
                 onClick={() => setShowMenu(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-designColor duration-300 text-2xl cursor-pointer"
+                className="absolute top-4 right-4 text-gray-400 hover:text-designColor duration-300 text-3xl cursor-pointer"
               >
-                <MdClose />
+                <RiCloseLine />
               </span>
             </div>
           </div>
