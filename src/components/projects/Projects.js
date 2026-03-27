@@ -12,6 +12,7 @@ import Schedra from "../../assets/images/Schedra.png";
 import Xpeero from "../../assets/images/filesharing.png";
 import AlgoView from "../../assets/images/algoview.png";
 import elearning from "../../assets/images/elearning.png";
+import evento from "../../assets/images/evento.png";
 import ProjectsCard from './ProjectsCard';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -75,11 +76,18 @@ const Projects = () => {
 
   const projectsData = [
     {
-      title: "Schedra - an AI-powered project scheduling and management platform",
+      title: "Schedra \n an AI-powered project scheduling and management",
       des: "AI-powered scheduling platform using Google Gemini to predict risks and bottlenecks. Features real-time simulations, dashboards, and risk heatmaps for smarter management.",
       src: Schedra,
       github: "https://github.com/Pratik-Bavche/Schedra-Predict_Plan_Deliver",
       live: "https://schedra-predict-plan-deliver-client.vercel.app/dashboard"
+    },
+    {
+      title: "Evento - A Campus Event Application",
+      des: "Evento is a smart campus event management platform designed to streamline event discovery, registration, and coordination with real-time updates, attendance tracking, and intelligent features that enhance student engagement and bridge academic and professional opportunities.",
+      src: evento,
+      github: "https://github.com/Pratik-Bavche/Campus_Event_App",
+      live: "https://github.com/Pratik-Bavche/Campus_Event_App"
     },
     {
       title: "xpeero - an file sharing platform",
