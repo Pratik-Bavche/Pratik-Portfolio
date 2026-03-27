@@ -88,6 +88,14 @@ const LeftBanner = () => {
     setHoldProgress(0);
   };
 
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="w-full lgl:w-1/2 flex flex-col gap-20 lgl:mr-20">
       <div className="flex flex-col gap-5">
@@ -121,35 +129,38 @@ const LeftBanner = () => {
         </p>
         <div className="mt-6 lgl:mt-4 relative group">
           <button
-            onMouseEnter={() => setShowPopup(true)}
-            onMouseLeave={() => {
+            onClick={!isDesktop ? triggerDownload : undefined}
+            onMouseEnter={isDesktop ? () => setShowPopup(true) : undefined}
+            onMouseLeave={isDesktop ? () => {
               setShowPopup(false);
               stopHold();
-            }}
-            onMouseDown={startHold}
-            onMouseUp={stopHold}
-            onTouchStart={startHold}
-            onTouchEnd={stopHold}
+            } : undefined}
+            onMouseDown={isDesktop ? startHold : undefined}
+            onMouseUp={isDesktop ? stopHold : undefined}
             className="relative w-full lgl:w-[220px] h-14 bg-[#141518] shadow-shadowOne text-base font-normal text-white lgl:text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 overflow-hidden flex justify-center items-center gap-3 border border-designColor lgl:border-transparent hover:border-designColor rounded-lg group select-none active:scale-95 transition-all"
           >
             {/* Progress Background */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${holdProgress}%` }}
-              className="absolute left-0 top-0 h-full bg-designColor opacity-20 pointer-events-none"
-            />
+            {isDesktop && (
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${holdProgress}%` }}
+                className="absolute left-0 top-0 h-full bg-designColor opacity-20 pointer-events-none"
+              />
+            )}
             
             {/* Progress Bar (Bottom) */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${holdProgress}%` }}
-              className="absolute left-0 bottom-0 h-1 bg-designColor z-20 pointer-events-none"
-            />
+            {isDesktop && (
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${holdProgress}%` }}
+                className="absolute left-0 bottom-0 h-1 bg-designColor z-20 pointer-events-none"
+              />
+            )}
 
             <span className="relative z-10 flex items-center gap-3">
-              {isHolding 
+              {isDesktop && isHolding 
                 ? `Holding ${Math.round(holdProgress)}%` 
-                : showPopup 
+                : isDesktop && showPopup 
                   ? "Hold to Download" 
                   : "Download CV"}
               <span className={`text-xl transition-transform duration-300 ${isHolding ? 'scale-125' : 'group-hover:translate-y-1'}`}>
