@@ -20,9 +20,15 @@ const Navbar = () => {
 
   return (
     <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-gray-600">
-      <div>
-        <img src={logo} className="w-16 h-16 object-cover" alt="logo" />
-
+      <div className="flex items-center gap-2 group cursor-pointer">
+        <img 
+          src={logo} 
+          className="w-12 h-12 lgl:w-16 lgl:h-16 rounded-full border-2 border-transparent group-hover:border-designColor transition-all duration-500 transform group-hover:scale-110 shadow-lg object-contain" 
+          alt="logo" 
+        />
+        <span className="text-xl font-bold tracking-wider text-gray-200 hidden sm:inline-flex bg-gradient-to-r from-gray-100 to-gray-400 bg-clip-text text-transparent group-hover:from-designColor group-hover:to-[#ff4d6d] transition-all duration-500">
+          PRATIK
+        </span>
       </div>
       <div>
         <ul className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
@@ -54,7 +60,12 @@ const Navbar = () => {
           <div className="w-full h-screen overflow-hidden fixed top-0 left-0 bg-gray-900 p-4 transform transition-transform duration-500 ease-in-out z-50">
             <div className="flex flex-col gap-8 py-2 relative h-full justify-center">
               <div>
-                <img className='w-16 h-16 object-contain' src={logo} alt="logo" />
+              <div className="flex items-center gap-3">
+                <img className='w-14 h-14 rounded-full border border-designColor shadow-lg object-contain bg-[#191b1e]' src={logo} alt="logo" />
+                <span className="text-2xl font-bold tracking-wider text-designColor">
+                  PRATIK
+                </span>
+              </div>
                 <p className="text-sm text-gray-400 mt-2">
                   I enjoy building full-featured applications using the MERN Stack, turning ideas into practical and interactive solutions. By combining MongoDB, Express, React, and Node.js, I focus on creating apps that are fast, secure, and easy to use. My goal is to deliver digital experiences that are both reliable and engaging, exceeding expectations with every project.
                 </p>

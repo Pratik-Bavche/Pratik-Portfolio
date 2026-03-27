@@ -5,7 +5,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 import PratikBavcheResume from "../../assets/PratikBavcheResume.pdf";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // LeftBanner component with typewriter effect and media integration
 const LeftBanner = () => {
@@ -50,6 +50,44 @@ const LeftBanner = () => {
     return () => clearInterval(interval);
   }, [controls]);
 
+  const [isHolding, setIsHolding] = useState(false);
+  const [holdProgress, setHoldProgress] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const holdTimerRef = useRef(null);
+  const startTimeRef = useRef(null);
+
+  const startHold = () => {
+    setIsHolding(true);
+    startTimeRef.current = Date.now();
+    holdTimerRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const progress = Math.min((elapsed / 5000) * 100, 100);
+      setHoldProgress(progress);
+      
+      if (progress >= 100) {
+        clearInterval(holdTimerRef.current);
+        triggerDownload();
+      }
+    }, 50);
+  };
+
+  const stopHold = () => {
+    setIsHolding(false);
+    clearInterval(holdTimerRef.current);
+    setHoldProgress(0);
+  };
+
+  const triggerDownload = () => {
+    const link = document.createElement("a");
+    link.href = PratikBavcheResume;
+    link.download = "Pratik_Bavche_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setIsHolding(false);
+    setHoldProgress(0);
+  };
+
   return (
     <div className="w-full lgl:w-1/2 flex flex-col gap-20 lgl:mr-20">
       <div className="flex flex-col gap-5">
@@ -81,12 +119,44 @@ const LeftBanner = () => {
         <p className="text-base font-bodyFont leading-6 tracking-wide">
           I focus on making designs that feel natural and easy to use. My goal is to keep things simple, clear, and engaging so users enjoy every interaction. By paying attention to both design and functionality, I make sure each project not only looks good but also works smoothly in real life.
         </p>
-        <div className="mt-6 lgl:mt-4">
-          <a href={PratikBavcheResume} target="_blank" rel="noopener noreferrer">
-            <button className="w-full lgl:w-[200px] h-12 bg-[#141518] shadow-shadowOne text-base font-normal text-white lgl:text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 hover:scale-105 active:scale-95 border border-designColor lgl:border-transparent hover:border-designColor rounded-lg group flex justify-center items-center gap-3 transition-all">
-              Download CV <span className="text-xl group-hover:translate-y-1 group-active:translate-y-2 transition-transform duration-300"><HiOutlineDownload /></span>
-            </button>
-          </a>
+        <div className="mt-6 lgl:mt-4 relative group">
+          <button
+            onMouseEnter={() => setShowPopup(true)}
+            onMouseLeave={() => {
+              setShowPopup(false);
+              stopHold();
+            }}
+            onMouseDown={startHold}
+            onMouseUp={stopHold}
+            onTouchStart={startHold}
+            onTouchEnd={stopHold}
+            className="relative w-full lgl:w-[220px] h-14 bg-[#141518] shadow-shadowOne text-base font-normal text-white lgl:text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 overflow-hidden flex justify-center items-center gap-3 border border-designColor lgl:border-transparent hover:border-designColor rounded-lg group select-none active:scale-95 transition-all"
+          >
+            {/* Progress Background */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${holdProgress}%` }}
+              className="absolute left-0 top-0 h-full bg-designColor opacity-20 pointer-events-none"
+            />
+            
+            {/* Progress Bar (Bottom) */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${holdProgress}%` }}
+              className="absolute left-0 bottom-0 h-1 bg-designColor z-20 pointer-events-none"
+            />
+
+            <span className="relative z-10 flex items-center gap-3">
+              {isHolding 
+                ? `Holding ${Math.round(holdProgress)}%` 
+                : showPopup 
+                  ? "Hold to Download" 
+                  : "Download CV"}
+              <span className={`text-xl transition-transform duration-300 ${isHolding ? 'scale-125' : 'group-hover:translate-y-1'}`}>
+                <HiOutlineDownload />
+              </span>
+            </span>
+          </button>
         </div>
       </div>
       <Media />
