@@ -6,6 +6,7 @@ import FooterBottom from "./components/footer/FooterBottom";
 import Navbar from "./components/navbar/Navbar";
 import Projects from "./components/projects/Projects";
 import Resume from "./components/resume/Resume";
+import Certificates from "./components/certificates/Certificates";
 
 import Cursor from "./components/Cursor";
 import ScrollUp from "./components/ScrollUp";
@@ -21,11 +22,13 @@ function App() {
         <Features />
         <Projects />
         <Resume />
+        <Certificates />
         <Contact />
         <FooterBottom />
       </div>
     </div>
   );
 }
+
 
 export default App;

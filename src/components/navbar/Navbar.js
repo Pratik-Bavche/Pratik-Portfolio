@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
-import { MdHome, MdApps, MdWork, MdDescription, MdContacts } from "react-icons/md";
+import { MdHome, MdApps, MdWork, MdDescription, MdContacts, MdStars } from "react-icons/md";
 import { RiCloseLine } from "react-icons/ri";
 import { FaLinkedinIn, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { logo } from "../../assets/index"
@@ -91,6 +91,7 @@ const Navbar = () => {
                           {item.title === "Features" && <MdApps />}
                           {item.title === "Projects" && <MdWork />}
                           {item.title === "Resume" && <MdDescription />}
+                          {item.title === "Certificates" && <MdStars />}
                           {item.title === "Contact" && <MdContacts />}
                         </span>
                         {item.title}

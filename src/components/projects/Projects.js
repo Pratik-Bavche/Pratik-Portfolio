@@ -97,18 +97,18 @@ const Projects = () => {
       live: "https://xpeero.vercel.app/home"
     },
     {
-      title: "E-Learning Appliaction",
-      des: "AI-driven app that generates personalized courses from user prompts. Features quizzes, flashcards, and progress tracking to create a flexible, learner-centered experience.",
-      src: elearning,
-      github: "https://e-learning-app--09b3lsf49l.expo.app",
-      live: "https://e-learning-application--9xht4bp79q.expo.appx"
-    },
-    {
       title: "AlgoView - An Algorithm Visualization Platform",
       des: "Interactive platform for visualizing algorithms via step-by-step animations and graphs. Helps students grasp complex concepts through custom inputs and data simulations.",
       src: AlgoView,
       github: "https://github.com/Pratik-Bavche/AlgoView-A-Platform-to-Visualize-Algorithms",
       live: "https://algo-view-algorithms-visulizer.vercel.app/"
+    },
+    {
+      title: "E-Learning Appliaction",
+      des: "AI-driven app that generates personalized courses from user prompts. Features quizzes, flashcards, and progress tracking to create a flexible, learner-centered experience.",
+      src: elearning,
+      github: "https://e-learning-app--09b3lsf49l.expo.app",
+      live: "https://e-learning-application--9xht4bp79q.expo.appx"
     },
     {
       title: "AI Website Generator",
@@ -189,7 +189,7 @@ const Projects = () => {
       <div className="w-full" onWheel={handleScroll}>
         <Slider ref={sliderRef} {...settings}>
           {projectsData.map((project, index) => (
-            <div key={index} className="px-5">
+            <div key={index} className="px-5 py-10">
               <ProjectsCard
                 title={project.title}
                 des={project.des}
