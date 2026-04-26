@@ -12,10 +12,10 @@ import ScrollUp from "./components/ScrollUp";
 
 function App() {
   return (
-    <div className="w-full h-auto bg-bodyColor text-lightText relative">
+    <div className="w-full h-auto bg-bodyColor text-lightText overflow-x-hidden">
       <ScrollUp />
       <Navbar />
-      <div className="container mx-auto">
+      <main className="max-w-screen-xl mx-auto px-4">
         <Banner />
         <Features />
         <Projects />
@@ -23,7 +23,7 @@ function App() {
         <Certificates />
         <Contact />
         <FooterBottom />
-      </div>
+      </main>
     </div>
   );
 }
