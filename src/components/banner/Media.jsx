@@ -64,7 +64,6 @@ const Media = () => {
         <div className="flex flex-wrap justify-center lgl:justify-start gap-4">
           <SocialIcon href="https://www.linkedin.com/in/pratik-bavche-b6b696325/" icon={<FaLinkedinIn />} color="#0077b5" />
           <SocialIcon href="https://github.com/Pratik-Bavche" icon={<FaGithub />} color="#ffffff" />
-          <SocialIcon href="https://x.com/Pratik_Bavche" icon={<FaTwitter />} color="#1da1f2" />
           <SocialIcon href="https://www.instagram.com/bavche_pratik" icon={<FaInstagram />} color="#e4405f" />
         </div>
       </div>
