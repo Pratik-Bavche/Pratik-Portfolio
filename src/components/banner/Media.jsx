@@ -1,7 +1,6 @@
 // imports of media icons
 import React from "react";
 import {
-  FaTwitter,
   FaLinkedinIn,
   FaReact,
   FaGithub,
@@ -63,7 +62,7 @@ const Media = () => {
         </h2>
         <div className="flex flex-wrap justify-center lgl:justify-start gap-4">
           <SocialIcon href="https://www.linkedin.com/in/pratik-bavche-b6b696325/" icon={<FaLinkedinIn />} color="#0077b5" />
-          <SocialIcon href="https://github.com/Pratik-Bavche" icon={<FaGithub />} color="#ffffff" />
+          <SocialIcon href="https://github.com/Pratik-Bavche" icon={<FaGithub />} color="#ffffff" /> 
           <SocialIcon href="https://www.instagram.com/bavche_pratik" icon={<FaInstagram />} color="#e4405f" />
         </div>
       </div>
