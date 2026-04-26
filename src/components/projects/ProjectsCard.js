@@ -15,7 +15,7 @@ const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
     <motion.div
       whileHover={{ y: -10 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="w-full p-4 xl:px-6 h-auto min-h-[500px] xl:py-6 rounded-3xl shadow-shadowOne flex flex-col bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-white/5 hover:border-designColor/50 transition-all duration-500 overflow-hidden relative"
+      className="w-full p-4 xl:px-6 h-auto min-h-[500px] xl:py-6 rounded-3xl shadow-shadowOne flex flex-col bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-white/5 hover:border-designColor/50 transition-all duration-500 overflow-hidden relative cursor-pointer"
     >
       {/* Background Decorative Element */}
       <div className="absolute -right-20 -bottom-20 w-48 h-48 bg-designColor/5 blur-[100px] rounded-full group-hover:bg-designColor/10 transition-all duration-500" />

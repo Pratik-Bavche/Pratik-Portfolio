@@ -15,7 +15,7 @@ const ResumeCard = ({ title, subTitle, result, des }) => {
           <span className="w-3 h-3 rounded-full bg-bodyColor group-hover:bg-designColor duration-300"></span>
         </span>
       </div>
-      <div className="w-full bg-gradient-to-br from-[#1e2024] to-[#191b1e] hover:from-[#191b1e] hover:to-[#1e2024] transition-all duration-500 rounded-2xl p-6 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne border border-transparent hover:border-designColor/30 relative overflow-hidden">
+      <div className="w-full bg-gradient-to-br from-[#1e2024] to-[#191b1e] hover:from-[#191b1e] hover:to-[#1e2024] transition-all duration-500 rounded-2xl p-6 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne border border-transparent hover:border-designColor/30 relative overflow-hidden cursor-pointer">
         {/* Hover Decorative Glow */}
         <div className="absolute -right-10 -top-10 w-32 h-32 bg-designColor/5 blur-3xl group-hover:bg-designColor/10 transition-all duration-500 rounded-full" />
         

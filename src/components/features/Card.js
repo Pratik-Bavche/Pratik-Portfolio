@@ -7,7 +7,7 @@ const Card = ({ item: { title, des, icon } }) => {
     <motion.div
       whileHover={{ y: -10 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="w-full px-8 lgl:px-10 h-full py-10 rounded-2xl shadow-shadowOne flex flex-col gap-8 bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-transparent hover:border-designColor/50 transition-all duration-500 relative overflow-hidden"
+      className="w-full px-8 lgl:px-10 h-full py-10 rounded-2xl shadow-shadowOne flex flex-col gap-8 bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-transparent hover:border-designColor/50 transition-all duration-500 relative overflow-hidden cursor-pointer"
     >
       {/* Background Decorative Gradient */}
       <div className="absolute -right-10 -top-10 w-32 h-32 bg-designColor/10 blur-3xl group-hover:bg-designColor/20 transition-all duration-500 rounded-full" />

@@ -45,7 +45,7 @@ const Media = () => {
       variants={iconVariants}
       whileHover="hover"
       title={title}
-      className="w-12 h-12 bg-black/40 border border-white/5 flex items-center justify-center rounded-xl shadow-lg hover:border-designColor/50 hover:text-designColor transition-colors duration-300 group cursor-help"
+      className="w-12 h-12 bg-black/40 border border-white/5 flex items-center justify-center rounded-xl shadow-lg hover:border-designColor/50 hover:text-designColor transition-colors duration-300 group cursor-pointer"
       style={{ color }}
     >
       <span className="text-xl group-hover:drop-shadow-[0_0_8px_rgba(255,1,79,0.5)]">

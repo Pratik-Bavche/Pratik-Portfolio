@@ -50,11 +50,7 @@
     display: none;
 }
 
-@media (min-width: 1024px) {
-    * {
-        cursor: none !important;
-    }
-}
+
 
 html {
     scroll-behavior: smooth;
@@ -70,4 +66,12 @@ html {
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Global Pointer Cursor for Interactive Elements */
+button, 
+a, 
+.cursor-pointer,
+[role="button"] {
+    cursor: pointer !important;
 }

@@ -139,7 +139,7 @@ const Skills = () => {
                     <motion.div
                       animate={{ rotate: -360 }}
                       transition={{ duration: Math.abs(orbit.speed), repeat: Infinity, ease: "linear" }}
-                      className={`w-14 h-14 bg-[#191b1e] rounded-xl border border-gray-800 flex items-center justify-center text-2xl ${skill.color} shadow-shadowOne group-hover:border-designColor group-hover:scale-125 transition-all duration-300 cursor-help relative`}
+                      className={`w-14 h-14 bg-[#191b1e] rounded-xl border border-gray-800 flex items-center justify-center text-2xl ${skill.color} shadow-shadowOne group-hover:border-designColor group-hover:scale-125 transition-all duration-300 cursor-pointer relative`}
                     >
                       {skill.icon}
                       
@@ -175,7 +175,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="flex flex-col items-center justify-center gap-3 bg-black bg-opacity-25 border border-gray-800 rounded-2xl p-4 group hover:border-designColor/50 transition-all duration-300 shadow-shadowOne"
+            className="flex flex-col items-center justify-center gap-3 bg-black bg-opacity-25 border border-gray-800 rounded-2xl p-4 group hover:border-designColor/50 transition-all duration-300 shadow-shadowOne cursor-pointer"
           >
             <div className={`w-14 h-14 bg-[#191b1e] rounded-xl flex items-center justify-center text-3xl ${skill.color}`}>
               {skill.icon}

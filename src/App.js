@@ -8,13 +8,11 @@ import Projects from "./components/projects/Projects";
 import Resume from "./components/resume/Resume";
 import Certificates from "./components/certificates/Certificates";
 
-import Cursor from "./components/Cursor";
 import ScrollUp from "./components/ScrollUp";
 
 function App() {
   return (
     <div className="w-full h-auto bg-bodyColor text-lightText relative">
-      <Cursor />
       <ScrollUp />
       <Navbar />
       <div className="container mx-auto">
