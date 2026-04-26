@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion';
 import Title from '../layouts/Title';
 import ContactLeft from './ContactLeft';
 
-// This component is used to create a contact form
 const Contact = () => {
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -12,13 +12,11 @@ const Contact = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ========== Email Validation start here ==============
   const emailValidation = () => {
     return String(email)
       .toLocaleLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
   };
-  // ========== Email Validation end here ================
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -35,14 +33,6 @@ const Contact = () => {
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
-      // =========================================================================
-      // ⚠️ IMPORTANT: EMAIL FUNCTIONALITY WILL NOT WORK WITHOUT A VALID ACCESS KEY
-      // 1. Go to https://web3forms.com/
-      // 2. Enter "pratikbavche2005@gmail.com"
-      // 3. Copy the Access Key sent to your email
-      // 4. Paste it below inside the quotes where it says YOUR_ACCESS_KEY_HERE
-      // =========================================================================
-
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -59,12 +49,8 @@ const Contact = () => {
         }),
       }).then((res) => res.json());
 
-      console.log("Web3Forms Response:", res);
-
       if (res.success) {
-        setSuccessMsg(
-          `Thank you! Your Messages has been sent Successfully!`
-        );
+        setSuccessMsg(`Thank you! Your Messages has been sent Successfully!`);
         setErrMsg("");
         setUsername("");
         setPhoneNumber("");
@@ -76,115 +62,108 @@ const Contact = () => {
       }
     }
   };
+
   return (
-    <section
-      id="contact"
-      className="w-full py-20 border-b-[1px] border-b-black"
-    >
+    <section id="contact" className="w-full py-20 border-b-[1px] border-b-black">
       <div className="flex justify-center items-center text-center">
         <Title des="Get in Touch" />
       </div>
-      <div className="w-full">
-        <div className="w-full h-auto flex flex-col lgl:flex-row justify-between lgl:items-stretch">
+      <div className="w-full mt-10">
+        <div className="w-full h-auto flex flex-col lgl:flex-row justify-between gap-10">
           <ContactLeft />
-          <div className="w-full lgl:w-[60%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne justify-center">
-            <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2">
-
-              <div className="w-full flex flex-col lgl:flex-row gap-10">
-                <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
-                    Your name
-                  </p>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full lgl:w-[60%] h-full bg-gradient-to-br from-[#1e2024] to-[#141518] flex flex-col gap-8 p-6 lgl:p-10 rounded-3xl shadow-shadowOne border border-white/5"
+          >
+            <form className="w-full flex flex-col gap-6">
+              <div className="w-full flex flex-col lgl:flex-row gap-6">
+                <div className="w-full lgl:w-1/2 flex flex-col gap-2">
+                  <label className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Your name</label>
                   <input
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
-                    className={`${errMsg === "Username is required!" &&
-                      "outline-designColor"
-                      } contactInput`}
+                    className="w-full bg-[#141518] text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-designColor transition-all duration-300"
                     type="text"
-                    required
                   />
                 </div>
-                <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
-                    Phone Number
-                  </p>
+                <div className="w-full lgl:w-1/2 flex flex-col gap-2">
+                  <label className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Phone Number</label>
                   <input
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
-                    className={`${errMsg === "Phone number is required!" &&
-                      "outline-designColor"
-                      } contactInput`}
+                    className="w-full bg-[#141518] text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-designColor transition-all duration-300"
                     type="text"
-                    required
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Email
-                </p>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Email</label>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className={`${errMsg === "Please give your Email!" &&
-                    "outline-designColor"
-                    } contactInput`}
+                  className="w-full bg-[#141518] text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-designColor transition-all duration-300"
                   type="email"
-                  required
                 />
               </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Subject
-                </p>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Subject</label>
                 <input
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
-                  className={`${errMsg === "Please give your Subject!" &&
-                    "outline-designColor"
-                    } contactInput`}
+                  className="w-full bg-[#141518] text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-designColor transition-all duration-300"
                   type="text"
                 />
               </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Message
-                </p>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Message</label>
                 <textarea
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
-                  className={`${errMsg === "Message is required!" && "outline-designColor"
-                    } contactTextArea`}
-                  cols="30"
-                  rows="10"
-                  required
+                  className="w-full bg-[#141518] text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-designColor transition-all duration-300 resize-none"
+                  rows="6"
                 ></textarea>
               </div>
-              <div className="w-full">
-                <button
-                  onClick={handleSend}
-                  className="w-full h-12 bg-[#141518] rounded-lg text-base text-white lgl:text-gray-400 tracking-wider uppercase hover:text-white duration-300 border-[1px] border-designColor lgl:border-transparent hover:border-designColor"
-                >
-                  Send Message
-                </button>
-              </div>
-              {errMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                  {errMsg}
-                </p>
-              )}
-              {successMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                  {successMsg}
-                </p>
-              )}
+              
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleSend}
+                className="w-full h-14 bg-gradient-to-r from-designColor to-[#ff4d6d] rounded-xl text-white font-bold uppercase tracking-widest shadow-lg hover:shadow-designColor/20 transition-all duration-300"
+              >
+                Send Message
+              </motion.button>
+
+              <AnimatePresence>
+                {errMsg && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center text-red-500 font-semibold"
+                  >
+                    {errMsg}
+                  </motion.p>
+                )}
+                {successMsg && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center text-green-500 font-semibold"
+                  >
+                    {successMsg}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
 
-export default Contact
+export default Contact;

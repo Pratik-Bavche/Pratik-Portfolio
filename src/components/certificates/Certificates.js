@@ -230,10 +230,16 @@ const Certificates = () => {
       <div className="flex justify-center items-center text-center">
         <Title des="Certificates & Achievements" />
       </div>
-      <div className="w-full" onWheel={handleScroll}>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="w-full" 
+        onWheel={handleScroll}
+      >
         <Slider ref={sliderRef} {...settings}>
             {certificatesData.map((cert, index) => (
-                <div key={index} className="px-4 py-10">
+                <div key={index} className="px-4 py-10 h-full">
                     <CertificateCard
                         title={cert.title}
                         provider={cert.provider}
@@ -245,7 +251,7 @@ const Certificates = () => {
                 </div>
             ))}
         </Slider>
-      </div>
+      </motion.div>
 
       {/* Modal Overlay */}
       <AnimatePresence>

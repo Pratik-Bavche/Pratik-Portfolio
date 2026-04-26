@@ -1,72 +1,92 @@
 import React from 'react'
 import { BsGithub } from "react-icons/bs";
-import { FaGlobe } from "react-icons/fa";
+import { FaGlobe, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-// This component is used to create a card for each project in the portfolio
-// It displays the project image, title, description, and links to GitHub and live site
 const ProjectsCard = ({ title, des, src, githubLink, liveLink }) => {
-
-  // Ensure link has a protocol so the browser will open it correctly
   const normalizeUrl = (url) => {
     if (!url) return "";
-    // trim whitespace
     const trimmed = url.trim();
     if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed;
     return `https://${trimmed}`;
   };
+
   return (
-    <div className="w-full p-4 xl:px-12 h-auto md:h-[550px] xl:py-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-gray-900 hover:to-gray-900 transition-colors duration-1000 border-2 border-transparent hover:border-designColor/30">
-      <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
+    <motion.div
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="w-full p-4 xl:px-6 h-auto min-h-[500px] xl:py-6 rounded-3xl shadow-shadowOne flex flex-col bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-white/5 hover:border-designColor/50 transition-all duration-500 overflow-hidden relative"
+    >
+      {/* Background Decorative Element */}
+      <div className="absolute -right-20 -bottom-20 w-48 h-48 bg-designColor/5 blur-[100px] rounded-full group-hover:bg-designColor/10 transition-all duration-500" />
+
+      {/* Image Section */}
+      <div className="w-full h-60 overflow-hidden rounded-2xl mb-6 relative">
         <img
-          className="w-full h-full object-contain group-hover:scale-105 duration-300 cursor-pointer"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
           src={src}
           alt={title || "Project"}
         />
-      </div>
-      <div className="w-full mt-5 flex flex-col  gap-6">
-        <div>
-          <div className="flex items-center justify-between">
-            <h3 className="text-base uppercase text-designColor font-normal">
-              {title}
-            </h3>
-            <div className="flex gap-2">
-              {githubLink ? (
-                <a
-                  href={normalizeUrl(githubLink)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-designColor lgl:text-gray-400 lgl:hover:text-designColor duration-300"
-                >
-                  <BsGithub />
-                </a>
-              ) : (
-                <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-500 opacity-60 cursor-not-allowed">
-                  <BsGithub />
-                </span>
-              )}
-
-              {liveLink ? (
-                <a
-                  href={normalizeUrl(liveLink)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-designColor lgl:text-gray-400 lgl:hover:text-designColor duration-300"
-                >
-                  <FaGlobe />
-                </a>
-              ) : (
-                <span className="text-lg w-10 h-10 rounded-full bg-black inline-flex justify-center items-center text-gray-500 opacity-60 cursor-not-allowed">
-                  <FaGlobe />
-                </span>
-              )}
-            </div>
-          </div>
-          <p className="text-sm tracking-wide mt-3 text-gray-100 lgl:text-gray-400 lgl:hover:text-gray-100 duration-300 h-auto md:h-[100px] overflow-hidden">
-            {des}
-          </p>
+        {/* Image Overlay */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+          {githubLink && (
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              href={normalizeUrl(githubLink)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white text-xl hover:bg-designColor hover:border-designColor transition-all duration-300"
+            >
+              <BsGithub />
+            </motion.a>
+          )}
+          {liveLink && (
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              href={normalizeUrl(liveLink)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white text-xl hover:bg-designColor hover:border-designColor transition-all duration-300"
+            >
+              <FaGlobe />
+            </motion.a>
+          )}
         </div>
       </div>
-    </div>
+
+      {/* Content Section */}
+      <div className="flex flex-col gap-4 relative z-10">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-lg font-bold text-gray-200 group-hover:text-designColor transition-colors duration-300 line-clamp-2 min-h-[56px]">
+            {title}
+          </h3>
+          <div className="w-12 h-[2px] bg-designColor/50 group-hover:w-full transition-all duration-500" />
+        </div>
+        
+        <p className="text-sm font-bodyFont text-gray-400 group-hover:text-gray-300 leading-relaxed line-clamp-4 min-h-[80px]">
+          {des}
+        </p>
+
+        <div className="mt-4 flex items-center justify-between">
+          <div className="flex gap-2">
+            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-400 uppercase tracking-wider">React</span>
+            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-400 uppercase tracking-wider">Node</span>
+          </div>
+          
+          <a 
+            href={normalizeUrl(liveLink || githubLink)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-designColor text-sm font-semibold group/link"
+          >
+            <span>Details</span>
+            <FaArrowRight className="group-hover/link:translate-x-2 transition-transform duration-300" />
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

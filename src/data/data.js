@@ -1,23 +1,43 @@
 import { AiFillAppstore } from "react-icons/ai";
-import { SiProgress } from "react-icons/si";
+import { SiProgress, SiAntdesign } from "react-icons/si";
+import { FaMobile, FaGlobe, FaDatabase } from "react-icons/fa";
 
 // Features Data
 export const featuresData = [
   {
     id: 1,
-    title: "Web Development",
-    des: "Skilled in building dynamic and visually appealing web applications that combine clean design with robust functionality",
+    title: "MERN Stack Development",
+    des: "Building powerful full-stack web applications using MongoDB, Express, React, and Node.js for high performance.",
+    icon: <SiProgress />,
   },
   {
     id: 2,
-    icon: <AiFillAppstore />,
-    title: "App Development",
-    des: "Skilled in creating smooth and user-friendly mobile applications for Android devices",
+    title: "App Development (Web/Mobile)",
+    des: "Creating seamless and user-friendly cross-platform mobile applications and responsive web experiences.",
+    icon: <FaMobile />,
   },
   {
     id: 3,
-    icon: <SiProgress />,
-    title: "MERN Development",
-    des: "Skilled in building full-stack web applications with MongoDB, Express, React, and Node.js",
+    title: "Database Management",
+    des: "Expertise in MySQL, PostgreSQL, and MongoDB to optimize data storage, retrieval, and overall system efficiency.",
+    icon: <FaDatabase />,
+  },
+  {
+    id: 4,
+    title: "API Development & Integration",
+    des: "Connecting frontend applications with robust backend systems and third-party services via REST and GraphQL.",
+    icon: <AiFillAppstore />,
+  },
+  {
+    id: 5,
+    title: "Problem Solving & DSA",
+    des: "Strong foundation in Data Structures and Algorithms to build efficient, optimized, and scalable code solutions.",
+    icon: <FaGlobe />,
+  },
+  {
+    id: 6,
+    title: "UI/UX & Responsive Design",
+    des: "Crafting intuitive and aesthetically pleasing interfaces that ensure a seamless experience across all devices.",
+    icon: <SiAntdesign />,
   },
 ];

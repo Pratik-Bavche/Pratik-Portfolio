@@ -1,38 +1,46 @@
 import React from 'react'
 import { HiArrowRight } from "react-icons/hi";
+import { motion } from "framer-motion";
 
-// This component is used to create a card that displays a title, description, and an icon
 const Card = ({ item: { title, des, icon } }) => {
   return (
-    <div className="w-full px-12 h-80 py-10 rounded-lg shadow-shadowOne flex items-center bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-black hover:to-[#1e2024] transition-colors duration-100 group border-2 border-transparent hover:border-designColor/30">
-      <div className="h-72 overflow-y-hidden">
-        <div className="flex h-full flex-col gap-10 translate-y-16 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="w-10 h-8 flex flex-col justify-between">
-
-            {/* This section displays the icon if available */}
-            {icon ? (
-              <span className="text-5xl text-designColor">{icon}</span>
-            ) : (
-              <>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-              </>
-            )}
-          </div>
-          <div className="flex flex-col gap-6">
-            <h2 className="text-xl md:text-2xl font-titleFont font-bold text-gray-300">
-              {title}
-            </h2>
-            <p className="base">{des}</p>
-            <span className="text-2xl text-designColor">
-              <HiArrowRight />
-            </span>
+    <motion.div
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="w-full px-8 lgl:px-10 h-full py-10 rounded-2xl shadow-shadowOne flex flex-col gap-8 bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-transparent hover:border-designColor/50 transition-all duration-500 relative overflow-hidden"
+    >
+      {/* Background Decorative Gradient */}
+      <div className="absolute -right-10 -top-10 w-32 h-32 bg-designColor/10 blur-3xl group-hover:bg-designColor/20 transition-all duration-500 rounded-full" />
+      
+      <div className="flex flex-col gap-6 relative z-10">
+        <div className="w-14 h-14 rounded-xl bg-black/40 border border-white/5 flex items-center justify-center text-4xl text-designColor shadow-lg group-hover:bg-designColor group-hover:text-white transition-all duration-500">
+          {icon ? icon : (
+            <div className="flex flex-col gap-1 w-6">
+              <span className="w-full h-[2px] bg-designColor group-hover:bg-white" />
+              <span className="w-full h-[2px] bg-designColor group-hover:bg-white" />
+              <span className="w-full h-[2px] bg-designColor group-hover:bg-white" />
+            </div>
+          )}
+        </div>
+        
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-titleFont font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+            {title}
+          </h2>
+          <p className="text-base font-bodyFont text-gray-400 group-hover:text-gray-300 leading-relaxed transition-colors duration-300">
+            {des}
+          </p>
+          
+          <div className="flex items-center gap-2 text-designColor font-semibold cursor-pointer group/link mt-2">
+            <span className="text-sm uppercase tracking-wider">Learn More</span>
+            <HiArrowRight className="text-xl group-hover/link:translate-x-2 transition-transform duration-300" />
           </div>
         </div>
       </div>
-    </div>
+      
+      {/* Hover Line Effect */}
+      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-designColor group-hover:w-full transition-all duration-500" />
+    </motion.div>
   );
 }
 

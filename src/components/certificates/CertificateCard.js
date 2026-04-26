@@ -1,48 +1,61 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaMedal } from 'react-icons/fa'
+import { FaMedal, FaSearchPlus } from 'react-icons/fa'
 
 const CertificateCard = ({ title, provider, date, des, src, onClick }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       onClick={onClick}
-      className="w-full p-4 xl:p-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-gray-900 hover:to-gray-900 transition-colors duration-1000 border-2 border-transparent hover:border-designColor/30 h-[450px] cursor-pointer"
+      className="w-full p-4 xl:p-6 rounded-3xl shadow-shadowOne flex flex-col bg-gradient-to-br from-bodyColor to-[#191b1e] group border border-white/5 hover:border-designColor/50 transition-all duration-500 h-[480px] cursor-pointer overflow-hidden relative"
     >
-      <div className="w-full h-48 overflow-hidden rounded-lg bg-black bg-opacity-40 flex items-center justify-center relative shrink-0">
+      {/* Background Decorative Element */}
+      <div className="absolute -right-16 -top-16 w-32 h-32 bg-designColor/5 blur-3xl group-hover:bg-designColor/10 transition-all duration-500 rounded-full" />
+
+      {/* Image Section */}
+      <div className="w-full h-52 overflow-hidden rounded-2xl bg-black/40 flex items-center justify-center relative shrink-0">
         {src ? (
           <img
             src={src}
             alt={title}
-            className="w-full h-full object-contain group-hover:scale-110 duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
           />
         ) : (
-          <FaMedal className="text-5xl text-designColor mb-3 group-hover:scale-110 duration-300" />
+          <FaMedal className="text-5xl text-designColor group-hover:scale-110 transition-transform duration-500" />
         )}
-        <div className="absolute top-4 right-4 text-[10px] bg-black bg-opacity-60 px-2 py-1 rounded text-designColor font-medium uppercase tracking-wide">
+        
+        {/* Date Badge */}
+        <div className="absolute top-3 right-3 text-[10px] bg-black/70 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-designColor font-semibold uppercase tracking-wider z-10">
           {date}
         </div>
-      </div>
-      <div className="flex flex-col items-center mt-4 gap-1">
-        <h3 className="text-lg font-bold text-gray-200 group-hover:text-designColor duration-300 text-center uppercase line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-xs font-medium text-gray-400 group-hover:text-white duration-300">
-          {provider}
-        </p>
+
+        {/* View Overlay */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <div className="w-12 h-12 bg-designColor text-white rounded-full flex items-center justify-center text-xl shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <FaSearchPlus />
+          </div>
+        </div>
       </div>
 
-      <div className="w-full mt-4 flex flex-col gap-4 flex-grow overflow-hidden">
-        <p className="text-xs md:text-sm tracking-wide text-gray-400 group-hover:text-gray-200 duration-300 line-clamp-6">
+      {/* Content Section */}
+      <div className="flex flex-col gap-4 mt-6 flex-grow relative z-10">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-lg font-bold text-gray-200 group-hover:text-designColor transition-colors duration-300 uppercase line-clamp-2 min-h-[56px] leading-tight">
+            {title}
+          </h3>
+          <div className="w-10 h-[2px] bg-designColor/50 group-hover:w-full transition-all duration-500" />
+        </div>
+        
+        <p className="text-sm font-bodyFont text-gray-400 group-hover:text-gray-300 leading-relaxed line-clamp-5 duration-300">
           {des}
         </p>
       </div>
+
+      {/* Bottom Accent */}
+      <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-designColor group-hover:w-full transition-all duration-700" />
     </motion.div>
   )
 }
-
 
 export default CertificateCard

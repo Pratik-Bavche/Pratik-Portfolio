@@ -1,54 +1,24 @@
-import React from 'react'
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import React, { useState, useRef } from 'react'
+import { useTypewriter } from "react-simple-typewriter";
 import Media from './Media';
 import { HiOutlineDownload } from "react-icons/hi";
 import PratikBavcheResume from "../../assets/PratikBavcheResume.pdf";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
-
-// LeftBanner component with typewriter effect and media integration
 const LeftBanner = () => {
   const [text] = useTypewriter({
     words: [
-      "Web Developer",
-      "Frontend Developer",
-      "Android Developer",
-      "Professional Coder",
-      "React Developer",
-      "Backend Developer",
-      "Full Stack Developer"
+      "Full Stack Developer",
+      "MERN Stack Specialist",
+      "React Native Developer",
+      "UI/UX Enthusiast",
+      "Problem Solver"
     ],
     loop: true,
-    typeSpeed: 20,
-    deleteSpeed: 50,
-    delaySpeed: 2000,
+    typeSpeed: 30,
+    deleteSpeed: 40,
+    delaySpeed: 1500,
   });
-
-  const controls = useAnimation();
-
-  useEffect(() => {
-    // Initial entrance animation
-    controls.start((i) => ({
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: { delay: i * 0.05 },
-    }));
-
-    // Periodic attention-grabbing animation
-    const interval = setInterval(() => {
-      controls.start((i) => ({
-        color: ["#c4cfde", "#c2003d", "#c4cfde"],
-        scale: [1, 1.2, 1],
-        y: [0, -5, 0],
-        textShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(194, 0, 61, 0.8)", "0px 0px 0px rgba(0,0,0,0)"],
-        transition: { delay: i * 0.05, duration: 0.5 },
-      }));
-    }, 5000); // Runs every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [controls]);
 
   const [isHolding, setIsHolding] = useState(false);
   const [holdProgress, setHoldProgress] = useState(0);
@@ -61,7 +31,7 @@ const LeftBanner = () => {
     startTimeRef.current = Date.now();
     holdTimerRef.current = setInterval(() => {
       const elapsed = Date.now() - startTimeRef.current;
-      const progress = Math.min((elapsed / 5000) * 100, 100);
+      const progress = Math.min((elapsed / 2500) * 100, 100); // Faster hold (2.5s)
       setHoldProgress(progress);
       
       if (progress >= 100) {
@@ -88,90 +58,143 @@ const LeftBanner = () => {
     setHoldProgress(0);
   };
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <div className="w-full lgl:w-1/2 flex flex-col gap-20 lgl:mr-20">
-      <div className="flex flex-col gap-5">
-        <h4 className="text-lg font-normal font-titleFont tracking-widest uppercase">
-          {"WELCOME TO MY PORTFOLIO!".split("").map((char, index) => (
-            <motion.span
-              key={index}
-              custom={index}
-              initial={{ opacity: 0, y: -20, rotateX: 90 }}
-              animate={controls}
-              className="inline-block cursor-default transition-all"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </h4>
-        <h1 className="text-6xl font-bold text-white">
-          Hey, I'm{" "}
-          <span className="text-designColor capitalize">Pratik Bavche</span>
-        </h1>
-        <h2 className="text-4xl font-bold text-pink">
-          a <span>{text}</span>
-          <Cursor
-            cursorBlinking="false"
-            cursorStyle="#"
-            cursorColor="#ff014f"
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="lgl:flex-1 flex flex-col gap-6 lgl:gap-8 items-center lgl:items-start text-center lgl:text-left"
+    >
+      <div className="flex flex-col gap-3">
+        <motion.h4 
+          variants={itemVariants}
+          className="text-base sm:text-lg font-medium font-titleFont tracking-[4px] uppercase text-designColor"
+        >
+          Welcome to my world
+        </motion.h4>
+        
+        <motion.h1 
+          variants={itemVariants}
+          className="text-4xl sm:text-5xl lgl:text-7xl font-bold text-white leading-tight"
+        >
+          Hi, I'm{" "}
+          <span className="relative inline-block">
+            <span className="bg-gradient-to-r from-designColor to-[#ff4d6d] bg-clip-text text-transparent">
+              Pratik Bavche
+            </span>
+            <motion.span 
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 1, duration: 1 }}
+              className="absolute bottom-1 lgl:bottom-2 left-0 h-1 lgl:h-2 bg-designColor/20 -z-10"
+            />
+          </span>
+        </motion.h1>
+
+        <motion.h2 
+          variants={itemVariants}
+          className="text-xl sm:text-2xl lgl:text-3xl font-semibold text-gray-300 min-h-[40px]"
+        >
+          a <span className="text-white border-b-2 border-designColor">{text}</span>
+          <motion.span
+            animate={{ 
+              opacity: [1, 0.4, 1],
+              scale: [1, 1.2, 1],
+              boxShadow: [
+                "0 0 5px #ff014f",
+                "0 0 15px #ff014f",
+                "0 0 5px #ff014f"
+              ]
+            }}
+            transition={{ 
+              duration: 1, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="inline-block w-[10px] h-[10px] bg-designColor rounded-full ml-2 align-middle mb-1"
           />
-        </h2>
-        <p className="text-base font-bodyFont leading-6 tracking-wide">
-          I focus on making designs that feel natural and easy to use. My goal is to keep things simple, clear, and engaging so users enjoy every interaction. By paying attention to both design and functionality, I make sure each project not only looks good but also works smoothly in real life.
-        </p>
-        <div className="mt-6 lgl:mt-4 relative group">
-          <button
-            onClick={!isDesktop ? triggerDownload : undefined}
-            onMouseEnter={isDesktop ? () => setShowPopup(true) : undefined}
-            onMouseLeave={isDesktop ? () => {
+        </motion.h2>
+
+        <motion.p 
+          variants={itemVariants}
+          className="text-sm sm:text-base font-bodyFont leading-7 text-gray-400 max-w-[600px] tracking-wide"
+        >
+          I specialize in building robust, scalable applications using the MERN stack. 
+          My passion lies in crafting high-performance digital solutions that bridge the gap 
+          between complex backend logic and seamless user experiences.
+        </motion.p>
+      </div>
+
+      <motion.div variants={itemVariants} className="flex flex-col items-center lgl:items-start gap-10">
+        <div className="relative inline-block w-fit group">
+          <motion.button
+            onMouseEnter={() => setShowPopup(true)}
+            onMouseLeave={() => {
               setShowPopup(false);
               stopHold();
-            } : undefined}
-            onMouseDown={isDesktop ? startHold : undefined}
-            onMouseUp={isDesktop ? stopHold : undefined}
-            className="relative w-full lgl:w-[220px] h-14 bg-[#141518] shadow-shadowOne text-base font-normal text-white lgl:text-gray-400 tracking-wider uppercase hover:text-designColor duration-300 overflow-hidden flex justify-center items-center gap-3 border border-designColor lgl:border-transparent hover:border-designColor rounded-lg group select-none active:scale-95 transition-all"
+            }}
+            onMouseDown={startHold}
+            onMouseUp={stopHold}
+            onTouchStart={startHold}
+            onTouchEnd={stopHold}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative px-10 py-5 bg-[#141518] rounded-xl shadow-shadowOne border border-white/5 overflow-hidden group transition-all duration-300"
           >
-            {/* Progress Background */}
-            {isDesktop && (
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${holdProgress}%` }}
-                className="absolute left-0 top-0 h-full bg-designColor opacity-20 pointer-events-none"
-              />
-            )}
+            {/* Progress Overlay */}
+            <motion.div 
+              style={{ width: `${holdProgress}%` }}
+              className="absolute left-0 top-0 h-full bg-designColor/30 pointer-events-none"
+            />
             
-            {/* Progress Bar (Bottom) */}
-            {isDesktop && (
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${holdProgress}%` }}
-                className="absolute left-0 bottom-0 h-1 bg-designColor z-20 pointer-events-none"
-              />
-            )}
-
-            <span className="relative z-10 flex items-center gap-3">
-              {isDesktop && isHolding 
-                ? `Holding ${Math.round(holdProgress)}%` 
-                : isDesktop && showPopup 
-                  ? "Hold to Download" 
-                  : "Download CV"}
-              <span className={`text-xl transition-transform duration-300 ${isHolding ? 'scale-125' : 'group-hover:translate-y-1'}`}>
-                <HiOutlineDownload />
+            {/* Glossy Effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative flex items-center gap-4 text-white font-titleFont tracking-wider uppercase font-semibold">
+              <span className="text-lg">
+                {isHolding ? `Extracting... ${Math.round(holdProgress)}%` : "Download Resume"}
               </span>
-            </span>
-          </button>
+              <HiOutlineDownload className={`text-2xl transition-all duration-300 ${isHolding ? 'animate-bounce' : 'group-hover:translate-y-1'}`} />
+            </div>
+          </motion.button>
+
+          <AnimatePresence>
+            {showPopup && !isHolding && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-designColor text-white text-xs py-2 px-4 rounded-full shadow-lg pointer-events-none z-20"
+              >
+                Press and hold for 2 seconds
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-designColor rotate-45" />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
-      <Media />
-    </div>
+
+        <Media />
+      </motion.div>
+    </motion.div>
   );
 }
 

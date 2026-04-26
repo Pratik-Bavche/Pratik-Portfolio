@@ -1,18 +1,56 @@
 import React from 'react'
 import { bannerImg } from "../../assets/index";
+import { motion } from "framer-motion";
 
-// RightBanner component that displays an image and a gradient background
-// This component is used to showcase a banner image with a gradient overlay
-// The image is imported from the assets folder
 const RightBanner = () => {
   return (
-    <div className="w-full lgl:w-1/2 flex justify-center items-center relative">
-      <img
-        className="w-[300px] h-[400px] lgl:w-[530px] lgl:h-[680px] z-10 -mt-20"
-        src={bannerImg}
-        alt="bannerImg"
+    <div className="lgl:flex-1 flex justify-center items-center relative group">
+      {/* Animated Background Shapes */}
+      <motion.div 
+        animate={{ 
+          rotate: 360,
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        className="absolute w-[250px] h-[250px] lgl:w-[500px] lgl:h-[500px] border border-designColor/20 rounded-3xl -rotate-12 opacity-30"
       />
-      <div className="absolute bottom-0 w-[350px] h-[300px] lgl:w-[500px] lgl:h-[500px] bg-gradient-to-r from-[#1e2024] to-[#202327] shadow-shadowOne flex justify-center items-center"></div>
+      <motion.div 
+        animate={{ 
+          rotate: -360,
+          scale: [1.1, 1, 1.1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute w-[230px] h-[230px] lgl:w-[480px] lgl:h-[480px] border border-white/10 rounded-3xl rotate-12 opacity-20"
+      />
+
+      {/* Main Image Container */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10"
+      >
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="relative"
+        >
+          {/* Glow Effect */}
+          <div className="absolute inset-0 bg-designColor/20 blur-[30px] lgl:blur-[50px] rounded-full -z-10 group-hover:bg-designColor/30 transition-all duration-500" />
+          
+          <img
+            className="w-[220px] h-[300px] sm:w-[280px] sm:h-[380px] lgl:w-[500px] lgl:h-[650px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            src={bannerImg}
+            alt="bannerImg"
+          />
+          
+          {/* Decorative Frame Elements */}
+          <div className="absolute -bottom-4 -left-4 w-20 h-20 border-b-4 border-l-4 border-designColor rounded-bl-3xl opacity-50" />
+          <div className="absolute -top-4 -right-4 w-20 h-20 border-t-4 border-r-4 border-designColor rounded-tr-3xl opacity-50" />
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

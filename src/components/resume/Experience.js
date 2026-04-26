@@ -18,7 +18,7 @@ const Experience = () => {
           </p>
           <h2 className="text-4xl font-bold">Full Stack Development</h2>
         </div>
-        <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-14 w-full border-l-[4px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="Full Stack Web Development Intern"
             subTitle="SK Children Foundation (NGO / Social Services)"
@@ -36,7 +36,7 @@ const Experience = () => {
           </p>
           <h2 className="text-4xl font-bold">Cybersecurity Internship</h2>
         </div>
-        <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-14 w-full border-l-[4px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="Cybersecurity Intern"
             subTitle="Cyber Cell, Pimpri Chinchwad"
@@ -54,7 +54,7 @@ const Experience = () => {
           </p>
           <h2 className="text-4xl font-bold">Technical Associate</h2>
         </div>
-        <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-14 w-full border-l-[4px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="Technical Associate"
             subTitle="EDC - Entrepreneurship Development Cell"
@@ -72,7 +72,7 @@ const Experience = () => {
           </p>
           <h2 className="text-4xl font-bold">Design Associate</h2>
         </div>
-        <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-14 w-full border-l-[4px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="Design Associate"
             subTitle="Government Polytechnic, Awasari Khurd - IT Club"
@@ -90,7 +90,7 @@ const Experience = () => {
           </p>
           <h2 className="text-4xl font-bold">Web Development Internship</h2>
         </div>
-        <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-14 w-full border-l-[4px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="Web Development Intern"
             subTitle="Alter TechSoft Pvt. Ltd."
