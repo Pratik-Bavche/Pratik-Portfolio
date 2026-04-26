@@ -134,17 +134,17 @@ const Navbar = () => {
                 initial={{ x: "100%", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: "100%", opacity: 0 }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto"
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto overflow-x-hidden will-change-transform"
               >
-                <div className="flex flex-col h-full relative">
+                <div className="flex flex-col relative min-h-full">
                   {/* Close Button */}
                   <div className="flex justify-end mb-4">
                     <motion.span
                       whileHover={{ rotate: 90, scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setShowMenu(false)}
-                      className="text-gray-400 hover:text-designColor duration-300 text-3xl cursor-pointer bg-white/5 w-12 h-12 flex items-center justify-center rounded-2xl border border-white/10 shadow-lg"
+                      className="text-gray-400 hover:text-designColor duration-200 text-3xl cursor-pointer bg-white/5 w-12 h-12 flex items-center justify-center rounded-2xl border border-white/10 shadow-lg"
                     >
                       <RiCloseLine />
                     </motion.span>
@@ -173,13 +173,13 @@ const Navbar = () => {
                   
                   {/* Navigation Links */}
                   <div className="flex-grow">
-                    <ul className="flex flex-col gap-2">
+                    <ul className="flex flex-col gap-1">
                       {navLinksdata.map((item, idx) => (
                         <motion.li
                           key={item._id}
-                          initial={{ opacity: 0, x: 20 }}
+                          initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 + idx * 0.05 }}
+                          transition={{ duration: 0.2, delay: 0.1 + idx * 0.03 }}
                           className="relative"
                         >
                           <Link
@@ -190,7 +190,7 @@ const Navbar = () => {
                             smooth={true}
                             offset={-70}
                             duration={500}
-                            className="flex items-center gap-4 px-4 py-4 rounded-2xl text-gray-300 font-semibold tracking-wide hover:bg-white/5 hover:text-designColor transition-all duration-300 group"
+                            className="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-gray-300 font-semibold tracking-wide hover:bg-white/5 hover:text-designColor transition-all duration-300 group"
                           >
                             <span className="text-2xl text-designColor bg-designColor/10 p-2.5 rounded-xl group-hover:bg-designColor group-hover:text-white transition-all duration-500 shadow-inner">
                               {item.title === "Home" && <MdHome />}
@@ -208,7 +208,7 @@ const Navbar = () => {
                   </div>
 
                   {/* Social Connect Footer */}
-                  <div className="mt-auto pt-10 border-t border-white/5">
+                  <div className="mt-12 mb-6 pt-10 border-t border-white/5">
                     <div className="flex flex-col gap-6">
                       <h2 className="text-xs uppercase font-bold text-gray-500 tracking-[3px] flex items-center gap-3">
                         <span className="w-8 h-[2px] bg-designColor" />
@@ -249,7 +249,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowMenu(false)}
-                className="fixed inset-0 bg-black/70 backdrop-blur-md z-[90] mdl:hidden"
+                className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-[90] mdl:hidden"
               />
             )}
           </AnimatePresence>
