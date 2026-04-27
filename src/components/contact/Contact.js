@@ -12,6 +12,8 @@ const Contact = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const emailValidation = () => {
     return String(email)
       .toLocaleLowerCase()
@@ -33,33 +35,45 @@ const Contact = () => {
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: "f28a0b41-5ac0-4071-b9e9-52f4d0709eea",
-          name: username,
-          phone: phoneNumber,
-          email: email,
-          subject: subject,
-          message: message,
-        }),
-      }).then((res) => res.json());
+      setIsLoading(true);
+      setErrMsg("");
+      
+      // Simulate/Wait for progress bar
+      setTimeout(async () => {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: "f28a0b41-5ac0-4071-b9e9-52f4d0709eea",
+            name: username,
+            phone: phoneNumber,
+            email: email,
+            subject: subject,
+            message: message,
+          }),
+        }).then((res) => res.json());
 
-      if (res.success) {
-        setSuccessMsg(`Thank you! Your Messages has been sent Successfully!`);
-        setErrMsg("");
-        setUsername("");
-        setPhoneNumber("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-      } else {
-        setErrMsg("Something went wrong! Please try again.");
-      }
+        setIsLoading(false);
+
+        if (res.success) {
+          setSuccessMsg(`Thank you! Your Messages has been sent Successfully!`);
+          setUsername("");
+          setPhoneNumber("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+          
+          // Remove success message after 1 second
+          setTimeout(() => {
+            setSuccessMsg("");
+          }, 1500);
+        } else {
+          setErrMsg("Something went wrong! Please try again.");
+        }
+      }, 1000); // 1 second for progress bar
     }
   };
 
@@ -76,7 +90,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full lgl:w-[60%] h-full bg-gradient-to-br from-[#1e2024] to-[#141518] flex flex-col gap-8 p-6 lgl:p-10 rounded-3xl shadow-shadowOne border border-white/5"
+            className="w-full lgl:w-[60%] h-full bg-gradient-to-br from-[#1e2024] to-[#141518] flex flex-col gap-8 p-6 lgl:p-10 rounded-3xl shadow-shadowOne border border-white/5 relative"
           >
             <form className="w-full flex flex-col gap-6">
               <div className="w-full flex flex-col lgl:flex-row gap-6">
@@ -127,35 +141,51 @@ const Contact = () => {
                 ></textarea>
               </div>
               
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={handleSend}
-                className="w-full h-14 bg-gradient-to-r from-designColor to-[#ff4d6d] rounded-xl text-white font-bold uppercase tracking-widest shadow-lg hover:shadow-designColor/20 transition-all duration-300"
-              >
-                Send Message
-              </motion.button>
+              <div className="relative">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleSend}
+                  disabled={isLoading}
+                  className={`w-full h-14 bg-gradient-to-r from-designColor to-[#ff4d6d] rounded-xl text-white font-bold uppercase tracking-widest shadow-lg hover:shadow-designColor/20 transition-all duration-300 ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}
+                >
+                  {isLoading ? "Sending..." : "Send Message"}
+                </motion.button>
+                
+                {isLoading && (
+                  <div className="absolute -bottom-4 left-0 w-full h-1.5 bg-black/20 rounded-full overflow-hidden">
+                    <motion.div 
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 1, ease: "easeInOut" }}
+                      className="h-full bg-designColor shadow-[0_0_10px_#ff014f]"
+                    />
+                  </div>
+                )}
+              </div>
 
               <AnimatePresence>
                 {errMsg && (
-                  <motion.p 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center text-red-500 font-semibold"
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center font-medium flex items-center justify-center gap-2"
                   >
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     {errMsg}
-                  </motion.p>
+                  </motion.div>
                 )}
                 {successMsg && (
-                  <motion.p 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center text-green-500 font-semibold"
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-500 text-center font-medium flex items-center justify-center gap-2"
                   >
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     {successMsg}
-                  </motion.p>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </form>

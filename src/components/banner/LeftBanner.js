@@ -145,7 +145,7 @@ const LeftBanner = () => {
       </div>
 
       <motion.div variants={itemVariants} className="flex flex-col items-center lgl:items-start gap-10">
-        <div className="relative inline-block w-fit group">
+        <div className="relative inline-block w-fit group ml-4">
           <motion.button
             onMouseEnter={() => setShowPopup(true)}
             onMouseLeave={() => {
@@ -158,7 +158,7 @@ const LeftBanner = () => {
             onTouchEnd={stopHold}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative px-10 py-5 bg-[#141518] rounded-xl shadow-shadowOne border border-white/5 overflow-hidden group transition-all duration-300"
+            className="relative px-10 py-5 bg-[#141518] rounded-xl shadow-shadowOne border border-white/5 overflow-hidden group transition-all duration-300 hover:border-designColor hover:shadow-[0_0_15px_#ff014f80]"
           >
             {/* Progress Overlay */}
             <motion.div 

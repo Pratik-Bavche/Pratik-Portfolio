@@ -78,9 +78,14 @@ const ContactLeft = () => {
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -5, scale: 1.1 }}
-              className="w-12 h-12 bg-[#141518] rounded-xl flex items-center justify-center text-xl text-gray-400 border border-white/5 hover:border-designColor hover:text-white transition-all duration-300 shadow-shadowOne"
-              style={{ "--hover-color": social.color } }
+              whileHover={{ 
+                y: -5, 
+                scale: 1.1,
+                color: social.color,
+                borderColor: social.color + "80", // Adding 50% opacity to border color
+                boxShadow: `0 0 20px ${social.color}40`
+              }}
+              className="w-12 h-12 bg-[#141518] rounded-xl flex items-center justify-center text-xl text-gray-400 border border-white/5 transition-all duration-300 shadow-shadowOne"
             >
               {social.icon}
             </motion.a>

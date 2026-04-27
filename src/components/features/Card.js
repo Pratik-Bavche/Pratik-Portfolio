@@ -31,9 +31,13 @@ const Card = ({ item: { title, des, icon } }) => {
             {des}
           </p>
           
-          <div className="flex items-center gap-2 text-designColor font-semibold cursor-pointer group/link mt-2">
-            <span className="text-sm uppercase tracking-wider">Learn More</span>
-            <HiArrowRight className="text-xl group-hover/link:translate-x-2 transition-transform duration-300" />
+          <div className="flex items-center gap-3 mt-4">
+            <div className="px-4 py-1.5 rounded-full bg-designColor/10 border border-designColor/20 text-designColor text-xs uppercase font-bold tracking-widest group-hover:bg-designColor group-hover:text-white transition-all duration-300">
+              Explore Service
+            </div>
+            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-designColor group-hover:translate-x-2 transition-all duration-300">
+              <HiArrowRight className="text-designColor group-hover:text-white" />
+            </div>
           </div>
         </div>
       </div>

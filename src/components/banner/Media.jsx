@@ -14,40 +14,30 @@ import {
 } from "react-icons/si";
 import { motion } from "framer-motion";
 
-const Media = () => {
-  const iconVariants = {
-    hover: {
-      scale: 1.1,
-      y: -5,
-      transition: { type: "spring", stiffness: 400, damping: 10 }
-    }
-  };
-
-  const SocialIcon = ({ href, icon, color }) => (
+const Media = () => {  const SocialIcon = ({ href, icon, color }) => (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      variants={iconVariants}
-      whileHover="hover"
-      className="w-12 h-12 bg-black/40 border border-white/5 flex items-center justify-center rounded-xl shadow-lg hover:border-designColor/50 hover:text-designColor transition-colors duration-300 group"
-      style={{ color }}
+      className="w-12 h-12 bg-black/40 flex items-center justify-center rounded-xl shadow-lg relative group"
+      style={{ color, borderColor: 'rgba(255,255,255,0.05)', borderWidth: '1px' }}
+      whileHover={{ borderColor: color, boxShadow: `0 0 15px ${color}60` }}
+      transition={{ duration: 0.2 }}
     >
-      <span className="text-xl group-hover:drop-shadow-[0_0_8px_rgba(255,1,79,0.5)]">
+      <span className="text-xl transition-all duration-300 group-hover:scale-110">
         {icon}
       </span>
     </motion.a>
   );
 
-  const SkillIcon = ({ icon, color, title }) => (
+  const SkillIcon = ({ icon, color }) => (
     <motion.div
-      variants={iconVariants}
-      whileHover="hover"
-      title={title}
-      className="w-12 h-12 bg-black/40 border border-white/5 flex items-center justify-center rounded-xl shadow-lg hover:border-designColor/50 hover:text-designColor transition-colors duration-300 group cursor-pointer"
-      style={{ color }}
+      className="w-12 h-12 bg-black/40 flex items-center justify-center rounded-xl shadow-lg relative group cursor-pointer"
+      style={{ color, borderColor: 'rgba(255,255,255,0.05)', borderWidth: '1px' }}
+      whileHover={{ borderColor: color, boxShadow: `0 0 15px ${color}60` }}
+      transition={{ duration: 0.2 }}
     >
-      <span className="text-xl group-hover:drop-shadow-[0_0_8px_rgba(255,1,79,0.5)]">
+      <span className="text-xl transition-all duration-300 group-hover:scale-110">
         {icon}
       </span>
     </motion.div>
@@ -75,11 +65,11 @@ const Media = () => {
           Best Skill On
         </h2>
         <div className="flex flex-wrap justify-center lgl:justify-start gap-4">
-          <SkillIcon icon={<SiHtml5 />} color="#e34f26" title="HTML5" />
-          <SkillIcon icon={<SiJavascript />} color="#f7df1e" title="JavaScript" />
-          <SkillIcon icon={<FaReact />} color="#61dafb" title="React.js" />
-          <SkillIcon icon={<SiMongodb />} color="#47a248" title="MongoDB" />
-          <SkillIcon icon={<SiTailwindcss />} color="#38b2ac" title="Tailwind CSS" />
+          <SkillIcon icon={<SiHtml5 />} color="#e34f26" />
+          <SkillIcon icon={<SiJavascript />} color="#f7df1e" />
+          <SkillIcon icon={<FaReact />} color="#61dafb" />
+          <SkillIcon icon={<SiMongodb />} color="#47a248" />
+          <SkillIcon icon={<SiTailwindcss />} color="#38b2ac" />
         </div>
       </div>
     </div>
