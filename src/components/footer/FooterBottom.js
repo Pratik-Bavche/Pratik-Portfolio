@@ -94,10 +94,45 @@ const FooterBottom = () => {
         </div>
       </div>
 
-      <div className="pt-8 border-t border-white/5 text-center">
-        <p className="text-gray-500 text-sm tracking-widest uppercase">
+      <div className="pt-8 pb-8 border-t border-white/5 flex flex-col items-center justify-center">
+        <p className="text-gray-500 text-sm tracking-widest uppercase mb-12">
           © {currentYear}. Developed by <span className="text-designColor font-bold">Pratik Bavche</span>
         </p>
+
+        {/* Animated Closing Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative group"
+        >
+          <p className="text-lg md:text-2xl font-titleFont text-gray-300 font-medium tracking-widest flex items-center gap-3">
+            Thanks for visiting my profile!
+            <motion.span
+              animate={{ rotate: [0, -15, 15, -15, 15, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+              className="text-designColor inline-block"
+            >
+              👋
+            </motion.span>
+          </p>
+
+          {/* Underline shimmer */}
+          <motion.div 
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+            className="absolute -bottom-3 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-designColor to-transparent origin-center"
+          />
+
+          {/* Ambient Glow */}
+          <motion.div 
+            animate={{ opacity: [0, 0.2, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -inset-6 bg-designColor blur-3xl rounded-full -z-10"
+          />
+        </motion.div>
       </div>
     </footer>
   );
