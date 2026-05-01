@@ -108,7 +108,7 @@ const FooterBottom = () => {
           className="relative group"
         >
           <p className="text-lg md:text-2xl font-titleFont text-gray-300 font-medium tracking-widest flex items-center gap-3">
-            Thanks for visiting my profile!
+            Thanks for visiting my portfolio!
             <motion.span
               animate={{ rotate: [0, -15, 15, -15, 15, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
