@@ -135,7 +135,7 @@ const Navbar = () => {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: "100%", opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto overflow-x-hidden will-change-transform"
+                className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto overflow-x-hidden will-change-transform overscroll-contain"
               >
                 <div className="flex flex-col relative min-h-full">
                   {/* Close Button */}
@@ -249,7 +249,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowMenu(false)}
-                className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-[90] mdl:hidden"
+                className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-[90] mdl:hidden touch-none"
               />
             )}
           </AnimatePresence>

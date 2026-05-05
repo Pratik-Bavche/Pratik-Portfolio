@@ -7,13 +7,16 @@ import Navbar from "./components/navbar/Navbar";
 import Projects from "./components/projects/Projects";
 import Resume from "./components/resume/Resume";
 import Certificates from "./components/certificates/Certificates";
+import Preloader from "./components/preloader/Preloader";
 
 import ScrollUp from "./components/ScrollUp";
 
 function App() {
   return (
-    <div className="w-full h-auto bg-bodyColor text-lightText overflow-x-hidden">
-      <ScrollUp />
+    <>
+      <Preloader />
+      <div className="w-full h-auto bg-bodyColor text-lightText overflow-x-hidden">
+        <ScrollUp />
       <Navbar />
       <main className="max-w-screen-xl mx-auto px-4">
         <Banner />
@@ -24,7 +27,8 @@ function App() {
         <Contact />
         <FooterBottom />
       </main>
-    </div>
+      </div>
+    </>
   );
 }
 
