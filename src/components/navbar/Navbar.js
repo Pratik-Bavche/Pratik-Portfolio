@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 import { MdHome, MdApps, MdWork, MdDescription, MdContacts, MdStars } from "react-icons/md";
 import { RiCloseLine } from "react-icons/ri";
-import { FaLinkedinIn, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { logo } from "../../assets/index"
 import { navLinksdata } from '../../constants';
@@ -225,36 +225,7 @@ const Navbar = () => {
                         </ul>
                       </div>
 
-                      {/* Social Connect Footer */}
-                      <div className="mt-6 mb-2 pt-6 border-t border-white/5">
-                        <div className="flex flex-col gap-4">
-                          <h2 className="text-[10px] uppercase font-bold text-gray-500 tracking-[3px] flex items-center gap-3">
-                            <span className="w-8 h-[2px] bg-designColor" />
-                            SOCIAL CONNECT
-                          </h2>
-                          <div className="flex gap-4">
-                            {[
-                              { icon: <FaLinkedinIn />, color: "#0077b5", link: "https://www.linkedin.com/in/pratik-bavche-b6b696325/" },
-                              { icon: <FaGithub />, color: "#ffffff", link: "https://github.com/Pratik-Bavche" },
-                              { icon: <FaTwitter />, color: "#1da1f2", link: "https://x.com/Pratik_Bavche" },
-                              { icon: <FaInstagram />, color: "#e4405f", link: "https://www.instagram.com/bavche_pratik" }
-                            ].map((social, i) => (
-                              <motion.a
-                                key={i}
-                                href={social.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ y: -5, scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="w-10 h-10 bg-[#141518] text-lg inline-flex items-center justify-center rounded-xl shadow-xl border border-white/5 hover:border-designColor transition-all duration-300"
-                                style={{ color: social.color }}
-                              >
-                                {social.icon}
-                              </motion.a>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+
                     </div>
                   </motion.div>
                 )}
