@@ -27,6 +27,7 @@ const LeftBanner = () => {
   const startTimeRef = useRef(null);
 
   const startHold = () => {
+    if (window.innerWidth < 768) return;
     setIsHolding(true);
     startTimeRef.current = Date.now();
     holdTimerRef.current = setInterval(() => {
@@ -154,8 +155,7 @@ const LeftBanner = () => {
             }}
             onMouseDown={startHold}
             onMouseUp={stopHold}
-            onTouchStart={startHold}
-            onTouchEnd={stopHold}
+            onTouchStart={() => { if (window.innerWidth < 768) triggerDownload(); }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="relative px-10 py-5 bg-[#141518] rounded-xl shadow-shadowOne border border-white/5 overflow-hidden group transition-all duration-300 hover:border-designColor hover:shadow-[0_0_15px_#ff014f80]"
@@ -183,7 +183,7 @@ const LeftBanner = () => {
                 initial={{ opacity: 0, y: 10, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-designColor text-white text-xs py-2 px-4 rounded-full shadow-lg pointer-events-none z-20"
+                className="hidden md:block absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-designColor text-white text-xs py-2 px-4 rounded-full shadow-lg pointer-events-none z-20"
               >
                 Press and hold for 2 seconds
                 <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-designColor rotate-45" />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import contactImg from "../../assets/images/contact/contactImg.jpg";
+import contactImg from "../../assets/images/contact/professional_portrait.png";
 
 const ContactLeft = () => {
   return (
@@ -15,20 +15,21 @@ const ContactLeft = () => {
       {/* Decorative Glow */}
       <div className="absolute -left-10 -top-10 w-32 h-32 bg-designColor/5 blur-3xl group-hover:bg-designColor/10 transition-all duration-500 rounded-full" />
 
-      <div className="relative overflow-hidden rounded-2xl group">
+      <div className="relative overflow-hidden rounded-2xl group cursor-pointer lgl:hover:shadow-shadowOne transition-shadow duration-500">
         <img
-          className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-60 sm:h-72 object-cover object-top transition-all duration-700 lgl:group-hover:scale-105"
           src={contactImg}
           alt="contactImg"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Glass Sweep Effect (Large screens only) */}
+        <div className="hidden lgl:block absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out pointer-events-none" />
       </div>
 
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <h3 className="text-3xl font-bold text-white tracking-wide">Pratik Bavche</h3>
           <p className="text-lg font-semibold text-designColor">
-            MERN Stack Developer
+            Building Scalable Software Solutions
           </p>
         </div>
         

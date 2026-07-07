@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom';
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 import { MdHome, MdApps, MdWork, MdDescription, MdContacts, MdStars } from "react-icons/md";
@@ -33,8 +34,10 @@ const Navbar = () => {
   useEffect(() => {
     if (showMenu) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
   }, [showMenu]);
 
@@ -128,131 +131,137 @@ const Navbar = () => {
             <FiMenu />
           </motion.span>
 
-          <AnimatePresence>
-            {showMenu && (
-              <motion.div 
-                initial={{ x: "100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: "100%", opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto overflow-x-hidden will-change-transform overscroll-contain"
-              >
-                <div className="flex flex-col relative min-h-full">
-                  {/* Close Button */}
-                  <div className="flex justify-end mb-4">
-                    <motion.span
-                      whileHover={{ rotate: 90, scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => setShowMenu(false)}
-                      className="text-gray-400 hover:text-designColor duration-200 text-3xl cursor-pointer bg-white/5 w-12 h-12 flex items-center justify-center rounded-2xl border border-white/10 shadow-lg"
-                    >
-                      <RiCloseLine />
-                    </motion.span>
-                  </div>
+          {typeof document !== 'undefined' && createPortal(
+            <>
+              {/* Overlay for mobile menu */}
+              <AnimatePresence>
+                {showMenu && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setShowMenu(false)}
+                    className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-[90] mdl:hidden touch-none"
+                  />
+                )}
+              </AnimatePresence>
 
-                  {/* Header Branding */}
-                  <div className="flex flex-col gap-6 mb-10">
-                    <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <img className='w-16 h-16 rounded-full border-2 border-designColor p-1 shadow-2xl object-contain bg-[#191b1e]' src={logo} alt="logo" />
-                        <div className="absolute inset-0 rounded-full bg-designColor/20 blur-md -z-10" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-2xl font-bold tracking-wider text-white">
-                          PRATIK
-                        </span>
-                        <span className="text-2xl font-bold tracking-wider text-designColor -mt-2">
-                          BAVCHE
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-400 leading-relaxed font-medium border-l-2 border-designColor/50 pl-4 py-1 italic">
-                      Crafting digital excellence through the MERN Stack. Turning ideas into interactive realities.
-                    </p>
-                  </div>
-                  
-                  {/* Navigation Links */}
-                  <div className="flex-grow">
-                    <ul className="flex flex-col gap-1">
-                      {navLinksdata.map((item, idx) => (
-                        <motion.li
-                          key={item._id}
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.2, delay: 0.1 + idx * 0.03 }}
-                          className="relative"
+              <AnimatePresence>
+                {showMenu && (
+                  <motion.div 
+                    initial={{ x: "100%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: "100%", opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-[85%] h-screen fixed top-0 right-0 bg-gradient-to-b from-[#191b1e] to-[#111214] p-4 pt-6 sm:p-10 z-[100] shadow-2xl border-l border-white/5 overflow-y-auto overflow-x-hidden will-change-transform overscroll-contain"
+                  >
+                    <div className="flex flex-col relative min-h-full">
+                      {/* Close Button */}
+                      <div className="flex justify-end mb-2">
+                        <motion.span
+                          whileHover={{ rotate: 90, scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => setShowMenu(false)}
+                          className="text-gray-400 hover:text-designColor duration-200 text-3xl cursor-pointer bg-white/5 w-12 h-12 flex items-center justify-center rounded-2xl border border-white/10 shadow-lg"
                         >
-                          <Link
-                            onClick={() => setShowMenu(false)}
-                            activeClass="active-mobile"
-                            to={item.link}
-                            spy={true}
-                            smooth={true}
-                            offset={-70}
-                            duration={500}
-                            className="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-gray-300 font-semibold tracking-wide hover:bg-white/5 hover:text-designColor transition-all duration-300 group"
-                          >
-                            <span className="text-2xl text-designColor bg-designColor/10 p-2.5 rounded-xl group-hover:bg-designColor group-hover:text-white transition-all duration-500 shadow-inner">
-                              {item.title === "Home" && <MdHome />}
-                              {item.title === "Features" && <MdApps />}
-                              {item.title === "Projects" && <MdWork />}
-                              {item.title === "Resume" && <MdDescription />}
-                              {item.title === "Certificates" && <MdStars />}
-                              {item.title === "Contact" && <MdContacts />}
-                            </span>
-                            {item.title}
-                          </Link>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
+                          <RiCloseLine />
+                        </motion.span>
+                      </div>
 
-                  {/* Social Connect Footer */}
-                  <div className="mt-12 mb-6 pt-10 border-t border-white/5">
-                    <div className="flex flex-col gap-6">
-                      <h2 className="text-xs uppercase font-bold text-gray-500 tracking-[3px] flex items-center gap-3">
-                        <span className="w-8 h-[2px] bg-designColor" />
-                        SOCIAL CONNECT
-                      </h2>
-                      <div className="flex gap-4">
-                        {[
-                          { icon: <FaLinkedinIn />, color: "#0077b5", link: "https://www.linkedin.com/in/pratik-bavche-b6b696325/" },
-                          { icon: <FaGithub />, color: "#ffffff", link: "https://github.com/Pratik-Bavche" },
-                          { icon: <FaTwitter />, color: "#1da1f2", link: "https://x.com/Pratik_Bavche" },
-                          { icon: <FaInstagram />, color: "#e4405f", link: "https://www.instagram.com/bavche_pratik" }
-                        ].map((social, i) => (
-                          <motion.a
-                            key={i}
-                            href={social.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ y: -5, scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="w-12 h-12 bg-[#141518] text-xl inline-flex items-center justify-center rounded-xl shadow-xl border border-white/5 hover:border-designColor transition-all duration-300"
-                            style={{ color: social.color }}
-                          >
-                            {social.icon}
-                          </motion.a>
-                        ))}
+                      {/* Header Branding */}
+                      <div className="flex flex-col gap-4 mb-6">
+                        <div className="flex items-center gap-3">
+                          <div className="relative">
+                            <img className='w-12 h-12 rounded-full border-2 border-designColor p-1 shadow-2xl object-contain bg-[#191b1e]' src={logo} alt="logo" />
+                            <div className="absolute inset-0 rounded-full bg-designColor/20 blur-md -z-10" />
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-xl font-bold tracking-wider text-white">
+                              PRATIK
+                            </span>
+                            <span className="text-xl font-bold tracking-wider text-designColor -mt-1.5">
+                              BAVCHE
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-xs text-gray-400 leading-relaxed font-medium border-l-2 border-designColor/50 pl-3 py-0.5 italic">
+                          Crafting digital excellence through the MERN Stack. Turning ideas into interactive realities.
+                        </p>
+                      </div>
+                      
+                      {/* Navigation Links */}
+                      <div className="flex-grow">
+                        <ul className="flex flex-col gap-1">
+                          {navLinksdata.map((item, idx) => (
+                            <motion.li
+                              key={item._id}
+                              initial={{ opacity: 0, x: 10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.2, delay: 0.1 + idx * 0.03 }}
+                              className="relative"
+                            >
+                              <Link
+                                onClick={() => setShowMenu(false)}
+                                activeClass="active-mobile"
+                                to={item.link}
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="flex items-center gap-4 px-4 py-2 rounded-2xl text-gray-300 font-semibold tracking-wide hover:bg-white/5 hover:text-designColor transition-all duration-300 group"
+                              >
+                                <span className="text-xl text-designColor bg-designColor/10 p-2 rounded-xl group-hover:bg-designColor group-hover:text-white transition-all duration-500 shadow-inner">
+                                  {item.title === "Home" && <MdHome />}
+                                  {item.title === "Features" && <MdApps />}
+                                  {item.title === "Projects" && <MdWork />}
+                                  {item.title === "Resume" && <MdDescription />}
+                                  {item.title === "Certificates" && <MdStars />}
+                                  {item.title === "Contact" && <MdContacts />}
+                                </span>
+                                {item.title}
+                              </Link>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Social Connect Footer */}
+                      <div className="mt-6 mb-2 pt-6 border-t border-white/5">
+                        <div className="flex flex-col gap-4">
+                          <h2 className="text-[10px] uppercase font-bold text-gray-500 tracking-[3px] flex items-center gap-3">
+                            <span className="w-8 h-[2px] bg-designColor" />
+                            SOCIAL CONNECT
+                          </h2>
+                          <div className="flex gap-4">
+                            {[
+                              { icon: <FaLinkedinIn />, color: "#0077b5", link: "https://www.linkedin.com/in/pratik-bavche-b6b696325/" },
+                              { icon: <FaGithub />, color: "#ffffff", link: "https://github.com/Pratik-Bavche" },
+                              { icon: <FaTwitter />, color: "#1da1f2", link: "https://x.com/Pratik_Bavche" },
+                              { icon: <FaInstagram />, color: "#e4405f", link: "https://www.instagram.com/bavche_pratik" }
+                            ].map((social, i) => (
+                              <motion.a
+                                key={i}
+                                href={social.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ y: -5, scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="w-10 h-10 bg-[#141518] text-lg inline-flex items-center justify-center rounded-xl shadow-xl border border-white/5 hover:border-designColor transition-all duration-300"
+                                style={{ color: social.color }}
+                              >
+                                {social.icon}
+                              </motion.a>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          {/* Overlay for mobile menu */}
-          <AnimatePresence>
-            {showMenu && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setShowMenu(false)}
-                className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-[90] mdl:hidden touch-none"
-              />
-            )}
-          </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>,
+            document.body
+          )}
         </div>
       </div>
     </div>

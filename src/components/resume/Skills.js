@@ -51,11 +51,14 @@ const Skills = () => {
     { radius: 320, speed: 80, skills: skillData.slice(16, 30) },
   ];
 
+  const [showAllSkills, setShowAllSkills] = useState(false);
+  const visibleSkills = showAllSkills ? skillData : skillData.slice(0, 8);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="w-full mt-10 min-h-[600px] flex items-center justify-center overflow-hidden relative py-20"
+      className="w-full mt-10 min-h-[600px] flex flex-col items-center justify-center overflow-hidden relative py-20"
     >
       {/* Desktop Radial Layout */}
       <div className="hidden lgl:flex relative items-center justify-center w-full h-[700px]">
@@ -167,24 +170,38 @@ const Skills = () => {
       </div>
 
       {/* Mobile/Tablet Grid Fallback */}
-      <div className="lgl:hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 w-full">
-        {skillData.map((skill, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="flex flex-col items-center justify-center gap-3 bg-black bg-opacity-25 border border-gray-800 rounded-2xl p-4 group hover:border-designColor/50 transition-all duration-300 shadow-shadowOne cursor-pointer"
+      <div className="lgl:hidden flex flex-col items-center w-full">
+        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 w-full mb-8">
+          {visibleSkills.map((skill, i) => (
+            <motion.div
+              layout
+              key={skill.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: (i % 8) * 0.05 }}
+              className="flex flex-col items-center justify-center gap-3 bg-black bg-opacity-25 border border-gray-800 rounded-2xl p-4 group hover:border-designColor/50 transition-all duration-300 shadow-shadowOne cursor-pointer"
+            >
+              <div className={`w-14 h-14 bg-[#191b1e] rounded-xl flex items-center justify-center text-3xl ${skill.color}`}>
+                {skill.icon}
+              </div>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 group-hover:text-white transition-colors duration-300 text-center">
+                {skill.title}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+        
+        {skillData.length > 8 && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowAllSkills(!showAllSkills)}
+            className="px-8 py-3 bg-transparent border border-designColor text-designColor rounded-lg hover:bg-designColor hover:text-white transition-all duration-300 font-titleFont tracking-wider uppercase text-sm font-semibold"
           >
-            <div className={`w-14 h-14 bg-[#191b1e] rounded-xl flex items-center justify-center text-3xl ${skill.color}`}>
-              {skill.icon}
-            </div>
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 group-hover:text-white transition-colors duration-300 text-center">
-              {skill.title}
-            </p>
-          </motion.div>
-        ))}
+            {showAllSkills ? "Show Less" : "Show More"}
+          </motion.button>
+        )}
       </div>
     </motion.div>
   );

@@ -9,7 +9,7 @@ const FooterBottom = () => {
     <footer className="w-full py-16 border-t border-black/20 bg-bodyColor">
       <div className="grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-4 gap-12 lgl:gap-8 mb-16">
         {/* Branding Section */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
           <h2 className="text-2xl font-bold text-white tracking-widest uppercase">
             Pratik <span className="text-designColor">Bavche</span>
           </h2>
@@ -39,9 +39,9 @@ const FooterBottom = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
           <h3 className="text-lg font-bold text-white uppercase tracking-wider">Quick Links</h3>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 items-center md:items-start">
             {['About', 'Projects', 'Resume', 'Contact'].map((link) => (
               <li key={link}>
                 <a 
@@ -57,9 +57,9 @@ const FooterBottom = () => {
         </div>
 
         {/* Services */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
           <h3 className="text-lg font-bold text-white uppercase tracking-wider">Specialties</h3>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 items-center md:items-start">
             {[
               'Web Development',
               'MERN Stack',
@@ -75,7 +75,7 @@ const FooterBottom = () => {
         </div>
 
         {/* WhatsApp Contact Section */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
           <h3 className="text-lg font-bold text-white uppercase tracking-wider">Get in Touch</h3>
           <p className="text-base text-gray-400">
             Have a project in mind? Let's discuss it over a quick chat on WhatsApp.
@@ -95,7 +95,7 @@ const FooterBottom = () => {
       </div>
 
       <div className="pt-8 pb-8 border-t border-white/5 flex flex-col items-center justify-center">
-        <p className="text-gray-500 text-sm tracking-widest uppercase mb-12">
+        <p className="text-gray-500 text-sm tracking-widest uppercase mb-12 text-center">
           © {currentYear}. Developed by <span className="text-designColor font-bold">Pratik Bavche</span>
         </p>
 
@@ -107,7 +107,7 @@ const FooterBottom = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative group"
         >
-          <p className="text-lg md:text-2xl font-titleFont text-gray-300 font-medium tracking-widest flex items-center gap-3">
+          <p className="text-[13px] xs:text-sm sm:text-lg md:text-2xl font-titleFont text-gray-300 font-medium tracking-[0.1em] md:tracking-widest flex items-center gap-2 md:gap-3 whitespace-nowrap">
             Thanks for visiting my portfolio!
             <motion.span
               animate={{ rotate: [0, -15, 15, -15, 15, 0] }}
